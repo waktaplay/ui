@@ -1,4 +1,4 @@
-import Align from "./Align"
+import Arrow from "./Arrow"
 
-export const FilterAlign = Align
+export const FilterArrow = Arrow
 export const Bbb = () => {}

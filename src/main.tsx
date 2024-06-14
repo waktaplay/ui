@@ -11,7 +11,7 @@ import Menu from "@components/Menu"
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
 import Withdraw from "@assets/icons/withdraw.svg"
-import { FilterAlign } from "./components/Filter"
+import { FilterArrow } from "./components/Filter"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -79,8 +79,14 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     </section>
 
     <section>
-      <h3>Filter</h3>
-      <FilterAlign options={[{ label: "최신순", value: "new" }]} />
+      <h3>Filter Arrow</h3>
+      <FilterArrow
+        options={[
+          { label: "최신순", value: "newest" },
+          { label: "오래된순", value: "oldest" },
+          { label: "조회순", value: "mostview" },
+        ]}
+      />
     </section>
   </React.StrictMode>,
 )
