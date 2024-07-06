@@ -86,6 +86,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           { label: "오래된순", value: "oldest" },
           { label: "조회순", value: "mostview" },
         ]}
+        onChange={value => alert(`changed value "${value}"`)}
       />
     </section>
   </React.StrictMode>,

@@ -4,12 +4,14 @@ import ArrowDown from "@assets/icons/arrow_small_down.svg"
 import styled from "styled-components"
 import Menu from "../Menu"
 
+interface FilterOptions {
+  label: string
+  value: string
+}
+
 interface FilterArrowProps {
   onChange?: (value: string) => void
-  options: Array<{
-    label: string
-    value: string
-  }>
+  options: Array<FilterOptions>
   value?: string
 }
 
@@ -41,7 +43,7 @@ const FilterArrowImg = styled.img<{ $active: boolean }>`
 `
 
 const Arrow = ({ onChange, options, value }: FilterArrowProps) => {
-  const [selectOption, setSelectOption] = useState<number>(0)
+  const [selectOption, setSelectOption] = useState<FilterOptions>(options[0])
   const [active, setActive] = useState<boolean>(false)
   const [menuPosition, setMenuPosition] = useState<FilterMenuPosition>({
     top: "auto",
@@ -52,20 +54,14 @@ const Arrow = ({ onChange, options, value }: FilterArrowProps) => {
   })
   const menuContainer = useRef<null | HTMLDivElement>(null)
 
+  // value 로 컨트롤
   useEffect(() => {
-    if (!onChange) return
-    onChange(options[selectOption].value)
-  }, [selectOption, options, onChange])
-
-  useEffect(() => {
-    if (!value) return
-    const index = options.findIndex(item => item.value === value)
-    if (index === -1) {
-      console.error("options 에 일치하는 value 가 없습니다.")
-      return
-    }
-    setSelectOption(index)
-  }, [value, options])
+    if (!value || selectOption.value === value) return
+    const index = options.findIndex(x => x.value === value)
+    if (index === -1) return
+    setSelectOption(options[index])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value])
 
   // menu container position 조정
   useEffect(() => {
@@ -102,13 +98,15 @@ const Arrow = ({ onChange, options, value }: FilterArrowProps) => {
 
   return (
     <Base active={active} setActive={setActive}>
-      <span>{options[selectOption].label}</span>
+      <span>{selectOption.label}</span>
       <FilterArrowImg $active={active} alt="down_arrow" src={ArrowDown} />
       <FilterMenuContainer $active={active} ref={menuContainer} menuposition={menuPosition}>
         <Menu
-          selectedKey={options[selectOption].value}
-          onClick={() => {
-            console.log()
+          selectedKey={selectOption.value}
+          onClick={changedValue => {
+            const index = options.findIndex(x => x.value === changedValue)
+            setSelectOption(options[index])
+            onChange && onChange(changedValue)
           }}
           itemList={options}
         />
