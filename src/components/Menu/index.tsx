@@ -39,17 +39,21 @@ const Menu = ({
     label: string
     value: string
   }[]
-  onClick: () => void
+  onClick: (value: string) => void
   selectedKey: string
 }) => {
   return (
     <article>
       <MenuWrapper>
-        {itemList.map(obj => {
+        {itemList.map(item => {
           return (
-            <MenuItem selected={selectedKey === obj.value} key={`menu-item-${obj.value}`} onClick={onClick}>
-              {obj.icon}
-              {obj.label}
+            <MenuItem
+              selected={selectedKey === item.value}
+              key={`menu-item-${item.value}`}
+              onClick={() => onClick(item.value)}
+            >
+              {item.icon}
+              {item.label}
             </MenuItem>
           )
         })}
