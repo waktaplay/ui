@@ -4,17 +4,6 @@ import ArrowDown from "@assets/icons/arrow_small_down.svg"
 import styled from "styled-components"
 import Menu from "../Menu"
 
-interface FilterOptions {
-  label: string
-  value: string
-}
-
-interface FilterArrowProps {
-  onChange?: (value: string) => void
-  options: Array<FilterOptions>
-  value?: string
-}
-
 interface FilterMenuPosition {
   top: string
   bottom: string
@@ -42,8 +31,22 @@ const FilterArrowImg = styled.img<{ $active: boolean }>`
   transform: ${props => (props.$active ? "rotate(180deg)" : "")};
 `
 
-const Arrow = ({ onChange, options, value }: FilterArrowProps) => {
-  const [selectOption, setSelectOption] = useState<FilterOptions>(options[0])
+const Arrow = ({
+  onChange,
+  options,
+  value,
+}: {
+  onChange?: (value: string) => void
+  options: Array<{
+    label: string
+    value: string
+  }>
+  value?: string
+}) => {
+  const [selectOption, setSelectOption] = useState<{
+    label: string
+    value: string
+  }>(options[0])
   const [active, setActive] = useState<boolean>(false)
   const [menuPosition, setMenuPosition] = useState<FilterMenuPosition>({
     top: "auto",
