@@ -62,7 +62,6 @@ const InnerWrapper = styled.div<{ opacity: number }>`
 `
 
 const Text = styled.span<{ focused: Boolean }>`
-  font-family: Pretendard;
   font-size: 16px;
   font-style: normal;
   font-weight: 500;

@@ -57,7 +57,6 @@ const ShowMoreBtn = styled.div`
 `
 
 const Text = styled.span`
-  font-family: Pretendard;
   color: white;
   font-size: 16px;
   font-style: normal;

@@ -91,7 +91,6 @@ const ChipWrapper = styled.div`
   width: fit-content;
   display: flex;
   align-items: center;
-
   gap: 10px;
 `
 //  TODO : ERASE CHIP CSS
