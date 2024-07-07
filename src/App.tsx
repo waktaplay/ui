@@ -14,6 +14,7 @@ import TabShowMore from "@components/Tabs/elements/TabShowMore"
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
 import Withdraw from "@assets/icons/withdraw.svg"
+import { FilterArrow } from "./components/Filter"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -190,6 +191,18 @@ const App = () => {
           {selectedTabIndex === 1 && <div>2content2</div>}
           {selectedTabIndex === 2 && <div>3content3</div>}
         </div>
+      </section>
+
+      <section>
+        <h3>Filter Arrow</h3>
+        <FilterArrow
+          options={[
+            { label: "최신순", value: "newest" },
+            { label: "오래된순", value: "oldest" },
+            { label: "조회순", value: "views" },
+          ]}
+          onChange={value => alert(`filter 의 options 이 선택되었습니다 "${value}"`)}
+        />
       </section>
     </article>
   )
