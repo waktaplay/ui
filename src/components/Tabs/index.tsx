@@ -85,6 +85,7 @@ const BottomWrapper = styled.div`
 const Wrapper = styled.div`
   width: fit-content;
   display: flex;
+  gap: 16px;
 `
 
 const ChipWrapper = styled.div`
