@@ -39,7 +39,7 @@ const FilterActiveControlInput = styled.input`
   pointer-events: none;
 `
 
-const Base = ({ children, active, setActive }: FilterBaseProps) => {
+const FilterBase = ({ children, active, setActive }: FilterBaseProps) => {
   const inputRef = useRef<HTMLInputElement>(null)
 
   // filter active 시 스크롤 disable
@@ -81,4 +81,4 @@ const Base = ({ children, active, setActive }: FilterBaseProps) => {
   )
 }
 
-export default Base
+export default FilterBase

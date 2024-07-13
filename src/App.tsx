@@ -10,11 +10,11 @@ import Footer from "@components/Footer"
 import Menu from "@components/Menu"
 import Tabs from "@components/Tabs"
 import TabShowMore from "@components/Tabs/elements/TabShowMore"
+import Filter from "@components/Filter"
 
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
 import Withdraw from "@assets/icons/withdraw.svg"
-import { FilterArrow } from "./components/Filter"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -195,7 +195,7 @@ const App = () => {
 
       <section>
         <h3>Filter Arrow</h3>
-        <FilterArrow
+        <Filter.Arrow
           options={[
             { label: "최신순", value: "newest" },
             { label: "오래된순", value: "oldest" },

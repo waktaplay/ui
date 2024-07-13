@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import Base from "./Base"
 import ArrowDown from "@assets/icons/arrow_small_down.svg"
 import styled from "styled-components"
-import Menu from "../Menu"
+import Menu from "../../Menu"
 
 interface FilterMenuPosition {
   top: string
@@ -31,7 +31,7 @@ const FilterArrowImg = styled.img<{ $active: boolean }>`
   transform: ${props => (props.$active ? "rotate(180deg)" : "")};
 `
 
-const Arrow = ({
+const FilterArrow = ({
   onChange,
   options,
   value,
@@ -118,4 +118,4 @@ const Arrow = ({
   )
 }
 
-export default Arrow
+export default FilterArrow
