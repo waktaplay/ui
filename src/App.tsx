@@ -10,6 +10,7 @@ import Footer from "@components/Footer"
 import Menu from "@components/Menu"
 import Tabs from "@components/Tabs"
 import TabShowMore from "@components/Tabs/elements/TabShowMore"
+import Filter from "@components/Filter"
 
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
@@ -190,6 +191,18 @@ const App = () => {
           {selectedTabIndex === 1 && <div>2content2</div>}
           {selectedTabIndex === 2 && <div>3content3</div>}
         </div>
+      </section>
+
+      <section>
+        <h3>Filter Arrow</h3>
+        <Filter.Arrow
+          options={[
+            { label: "최신순", value: "newest" },
+            { label: "오래된순", value: "oldest" },
+            { label: "조회순", value: "views" },
+          ]}
+          onChange={value => alert(`filter 의 options 이 선택되었습니다 "${value}"`)}
+        />
       </section>
     </article>
   )
