@@ -222,14 +222,18 @@ const App = () => {
             Button Outline large
           </Button.Outline>
           <Button.Fill size="small" onClick={() => alert("Button Click!")}>
-            Button Fill small
+            Button Fill small gray
           </Button.Fill>
           <Button.Fill size="medium" color="primary" onClick={() => alert("Button Click!")}>
-            Button Fill medium
+            Button Fill medium primary
+          </Button.Fill>
+          <Button.Fill size="medium" cat color="primary" onClick={() => alert("Button Click!")}>
+            Button Fill medium CAT primary
           </Button.Fill>
           <Button.Fill size="large" onClick={() => alert("Button Click!")}>
-            Button Fill large
+            Button Fill large gray
           </Button.Fill>
+          <Button.More />
         </article>
       </section>
     </article>

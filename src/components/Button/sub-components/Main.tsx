@@ -1,3 +1,4 @@
+import { ReactElement } from "react"
 import styled from "styled-components"
 
 const MainButton = styled.button<{
@@ -11,7 +12,7 @@ const MainButton = styled.button<{
   hover?: string
   active?: string
 }>`
-  background-color: ${props => props.background || "transparent"};
+  background: ${props => props.background || "transparent"};
   padding: ${props => props.padding};
   border-radius: ${props => props.radius};
   font-size: ${props => props.fontSize};
@@ -19,7 +20,6 @@ const MainButton = styled.button<{
   border: ${props => props.border || "none"};
   color: ${props => props.color || "#E5E7EC"};
   cursor: pointer;
-  position: relative;
   overflow: hidden;
   &:hover {
     background: ${props =>
@@ -36,7 +36,7 @@ const MainButton = styled.button<{
 `
 
 const Main = (props: {
-  children?: string
+  children?: string | ReactElement
   onClick?: () => void
   padding?: string
   radius?: string

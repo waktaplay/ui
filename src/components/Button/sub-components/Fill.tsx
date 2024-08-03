@@ -5,11 +5,13 @@ const Fill = ({
   onClick,
   size = "small",
   color = "gray",
+  cat = false,
 }: {
   children?: string
   onClick?: () => void
   size?: "small" | "medium" | "large"
   color?: "gray" | "primary"
+  cat?: boolean
 }) => {
   const sizeToStyle = {
     height: {
@@ -39,8 +41,8 @@ const Fill = ({
     primary: {
       background: "#47F998",
       color: "#191A1A",
-      hover: "#83FFA0",
-      active: "#83FFA0",
+      hover: cat ? "#83FFA0" : "#47F998",
+      active: cat ? "#83FFA0" : "#47F998",
     },
   }
 
