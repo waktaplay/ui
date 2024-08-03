@@ -41,8 +41,8 @@ const Fill = ({
     primary: {
       background: "#47F998",
       color: "#191A1A",
-      hover: cat ? "#83FFA0" : "#47F998",
-      active: cat ? "#83FFA0" : "#47F998",
+      hover: cat ? "#47F998" : "#83FFA0",
+      active: cat ? "#47F998" : "#83FFA0",
     },
   }
 

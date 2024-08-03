@@ -233,7 +233,7 @@ const App = () => {
           <Button.Fill size="large" onClick={() => alert("Button Click!")}>
             Button Fill large gray
           </Button.Fill>
-          <Button.More />
+          <Button.More onChange={value => alert(`More Button Change Value: ${value ? "true" : "false"}`)} />
         </article>
       </section>
     </article>
