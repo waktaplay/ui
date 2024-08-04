@@ -16,6 +16,7 @@ import CheckBox from "@/components/CheckBox"
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
 import Withdraw from "@assets/icons/withdraw.svg"
+import Button from "./components/Button"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -209,6 +210,37 @@ const App = () => {
       </section>
 
       <section>
+        <h3>Button</h3>
+        <article
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            alignItems: "start",
+          }}
+        >
+          <Button.Text onClick={() => alert("Button Click!")}>Button Text</Button.Text>
+          <Button.Outline onClick={() => alert("Button Click!")}>Button Outline Small</Button.Outline>
+          <Button.Outline size="large" onClick={() => alert("Button Click!")}>
+            Button Outline large
+          </Button.Outline>
+          <Button.Fill size="small" onClick={() => alert("Button Click!")}>
+            Button Fill small gray
+          </Button.Fill>
+          <Button.Fill size="medium" color="primary" onClick={() => alert("Button Click!")}>
+            Button Fill medium primary
+          </Button.Fill>
+          <Button.Fill size="medium" cat color="primary" onClick={() => alert("Button Click!")}>
+            Button Fill medium CAT primary
+          </Button.Fill>
+          <Button.Fill size="large" onClick={() => alert("Button Click!")}>
+            Button Fill large gray
+          </Button.Fill>
+          <Button.More onChange={value => alert(`More Button Change Value: ${value ? "true" : "false"}`)} />
+        </article>
+      </section>
+      
+      <section>
         {/* 체크되면 글자색이 바뀝니다 */}
         <H3 isChecked={isChecked}>CheckBox</H3>
         <CheckBox text="checkbox" isChecked={isChecked} setIsChecked={setIsChecked} />
@@ -234,6 +266,7 @@ const FlexContainer = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
 `
+
 // FOR : CHECKBOX
 const H3 = styled.h3<{ isChecked: boolean }>`
   color: ${({ isChecked }) => (isChecked ? "#0000ff" : "#ff0000")};
