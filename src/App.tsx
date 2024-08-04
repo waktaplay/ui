@@ -11,11 +11,13 @@ import Menu from "@components/Menu"
 import Tabs from "@components/Tabs"
 import TabShowMore from "@components/Tabs/elements/TabShowMore"
 import Filter from "@components/Filter"
+import CheckBox from "@/components/CheckBox"
 
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
 import Withdraw from "@assets/icons/withdraw.svg"
 import ToastMessage from "./components/ToastMessage"
+import Button from "./components/Button"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -93,6 +95,9 @@ const App = () => {
   const [isShowedMore, setIsShowedMore] = useState(false)
   //해당 message state 들은 toastMessage UI 와 사용되는  state 입니다.
   const [message, setMessage] = useState("")
+  //해당 isChecked state는 checkbox 와 사용되는  state 입니다.
+  const [isChecked, setIsChecked] = useState(false)
+
   return (
     <article>
       <h2>SpaceWak Design System</h2>
@@ -235,16 +240,54 @@ const App = () => {
         </button>
         <ToastMessage message={message} setMessage={setMessage} />
       </section>
+
+      <section>
+        <h3>Button</h3>
+        <article
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            alignItems: "start",
+          }}
+        >
+          <Button.Text onClick={() => alert("Button Click!")}>Button Text</Button.Text>
+          <Button.Outline onClick={() => alert("Button Click!")}>Button Outline Small</Button.Outline>
+          <Button.Outline size="large" onClick={() => alert("Button Click!")}>
+            Button Outline large
+          </Button.Outline>
+          <Button.Fill size="small" onClick={() => alert("Button Click!")}>
+            Button Fill small gray
+          </Button.Fill>
+          <Button.Fill size="medium" color="primary" onClick={() => alert("Button Click!")}>
+            Button Fill medium primary
+          </Button.Fill>
+          <Button.Fill size="medium" cat color="primary" onClick={() => alert("Button Click!")}>
+            Button Fill medium CAT primary
+          </Button.Fill>
+          <Button.Fill size="large" onClick={() => alert("Button Click!")}>
+            Button Fill large gray
+          </Button.Fill>
+          <Button.More onChange={value => alert(`More Button Change Value: ${value ? "true" : "false"}`)} />
+        </article>
+      </section>
+      
+      <section>
+        {/* 체크되면 글자색이 바뀝니다 */}
+        <H3 isChecked={isChecked}>CheckBox</H3>
+        <CheckBox text="checkbox" isChecked={isChecked} setIsChecked={setIsChecked} />
+      </section>
     </article>
   )
 }
 
 // TODO : 아래 스타일은 더미 내용물에 대한 스타일 이므로 지우셔도됩니다.
 
+// FOR : TABS
 const Unit = styled.div`
   width: 50px;
   height: 50px;
-  background-color: blue;
+  background-color: #0000ff;
   flex: 0 0 24%;
   margin: 0.5%;
 `
@@ -254,6 +297,11 @@ const FlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+`
+
+// FOR : CHECKBOX
+const H3 = styled.h3<{ isChecked: boolean }>`
+  color: ${({ isChecked }) => (isChecked ? "#0000ff" : "#ff0000")};
 `
 
 export default App

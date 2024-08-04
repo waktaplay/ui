@@ -58,7 +58,6 @@ const FilterBase = ({ children, active, setActive }: FilterBaseProps) => {
 
   // filter active 외부 클릭시 inactive
   useEffect(() => {
-    console.log(active)
     if (!active) return
     inputRef.current?.focus()
   }, [active])
