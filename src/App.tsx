@@ -15,6 +15,7 @@ import Filter from "@components/Filter"
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
 import Withdraw from "@assets/icons/withdraw.svg"
+import ToastMessage from "./components/ToastMessage"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -90,7 +91,8 @@ const App = () => {
   //해당 selectedTabIndex,isShowedMore 두개의 state 들은 tabs UI 와 사용되는  state 입니다.
   const [selectedTabIndex, setSelectedTabIndex] = useState(0)
   const [isShowedMore, setIsShowedMore] = useState(false)
-
+  //해당 message state 들은 toastMessage UI 와 사용되는  state 입니다.
+  const [message, setMessage] = useState("")
   return (
     <article>
       <h2>SpaceWak Design System</h2>
@@ -203,6 +205,35 @@ const App = () => {
           ]}
           onChange={value => alert(`filter 의 options 이 선택되었습니다 "${value}"`)}
         />
+      </section>
+
+      <section>
+        <h3>ToastMessage</h3>
+        <button
+          onClick={() => {
+            try {
+              throw new Error("My 일정은 최대 9개까지 등록할 수 있어요.")
+            } catch (error) {
+              setMessage(error.message)
+            }
+            console.log(message)
+          }}
+        >
+          토스트 테스트 버튼 - My 일정은 최대 9개까지 등록할 수 있어요.
+        </button>
+        <button
+          onClick={() => {
+            try {
+              throw new Error("잘못된 형식입니다")
+            } catch (error) {
+              setMessage(error.message)
+            }
+            console.log(message)
+          }}
+        >
+          토스트 테스트 버튼2 - 잘못된 형식입니다
+        </button>
+        <ToastMessage message={message} setMessage={setMessage} />
       </section>
     </article>
   )
