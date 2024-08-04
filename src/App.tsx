@@ -11,6 +11,7 @@ import Menu from "@components/Menu"
 import Tabs from "@components/Tabs"
 import TabShowMore from "@components/Tabs/elements/TabShowMore"
 import Filter from "@components/Filter"
+import CheckBox from "@/components/CheckBox"
 
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
@@ -90,6 +91,8 @@ const App = () => {
   //해당 selectedTabIndex,isShowedMore 두개의 state 들은 tabs UI 와 사용되는  state 입니다.
   const [selectedTabIndex, setSelectedTabIndex] = useState(0)
   const [isShowedMore, setIsShowedMore] = useState(false)
+  //해당 isChecked state는 checkbox 와 사용되는  state 입니다.
+  const [isChecked, setIsChecked] = useState(false)
 
   return (
     <article>
@@ -204,16 +207,23 @@ const App = () => {
           onChange={value => alert(`filter 의 options 이 선택되었습니다 "${value}"`)}
         />
       </section>
+
+      <section>
+        {/* 체크되면 글자색이 바뀝니다 */}
+        <H3 isChecked={isChecked}>CheckBox</H3>
+        <CheckBox text="checkbox" isChecked={isChecked} setIsChecked={setIsChecked} />
+      </section>
     </article>
   )
 }
 
 // TODO : 아래 스타일은 더미 내용물에 대한 스타일 이므로 지우셔도됩니다.
 
+// FOR : TABS
 const Unit = styled.div`
   width: 50px;
   height: 50px;
-  background-color: blue;
+  background-color: #0000ff;
   flex: 0 0 24%;
   margin: 0.5%;
 `
@@ -223,6 +233,10 @@ const FlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+`
+// FOR : CHECKBOX
+const H3 = styled.h3<{ isChecked: boolean }>`
+  color: ${({ isChecked }) => (isChecked ? "#0000ff" : "#ff0000")};
 `
 
 export default App
