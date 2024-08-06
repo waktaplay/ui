@@ -11,10 +11,14 @@ import Menu from "@components/Menu"
 import Tabs from "@components/Tabs"
 import TabShowMore from "@components/Tabs/elements/TabShowMore"
 import Filter from "@components/Filter"
+import Chip from "@components/Chip"
 
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
 import Withdraw from "@assets/icons/withdraw.svg"
+
+import ChunsikSVG from "@assets/icons/members/gwakchunsik.svg"
+import WaktaverseSVG from "@assets/icons/group/waktaverse.svg"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -203,6 +207,15 @@ const App = () => {
           ]}
           onChange={value => alert(`filter 의 options 이 선택되었습니다 "${value}"`)}
         />
+      </section>
+
+      <section>
+        <h3>Chip</h3>
+        <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
+          <Chip.Normal item={{ label: "텍스트", value: "txt" }} />
+          <Chip.Small item={{ icon: ChunsikSVG, label: "곽춘식", value: "chunsik" }} />
+          <Chip.Middle item={{ icon: WaktaverseSVG, label: "왁타버스", value: "chunsik" }} />
+        </div>
       </section>
     </article>
   )
