@@ -1,6 +1,5 @@
-import React, { useState } from "react"
-import ReactDOM from "react-dom/client"
-import styled, { css } from "styled-components"
+import { useState } from "react"
+import styled from "styled-components"
 
 import "normalize.css"
 import "./main.css"
@@ -11,11 +10,16 @@ import Menu from "@components/Menu"
 import Tabs from "@components/Tabs"
 import TabShowMore from "@components/Tabs/elements/TabShowMore"
 import Filter from "@components/Filter"
+import CheckBox from "@/components/CheckBox"
+import Button from "@/components/Button"
 import Chip from "@components/Chip"
 
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
 import Withdraw from "@assets/icons/withdraw.svg"
+
+import SpacewakTextLogo from "@assets/logo/spacewak-text-logo.svg"
+import WaktaplayTextLogo from "@assets/logo/waktaplay-text-logo.svg"
 
 import ChunsikSVG from "@assets/icons/members/gwakchunsik.svg"
 import WaktaverseSVG from "@assets/icons/group/waktaverse.svg"
@@ -94,6 +98,8 @@ const App = () => {
   //해당 selectedTabIndex,isShowedMore 두개의 state 들은 tabs UI 와 사용되는  state 입니다.
   const [selectedTabIndex, setSelectedTabIndex] = useState(0)
   const [isShowedMore, setIsShowedMore] = useState(false)
+  //해당 isChecked state는 checkbox 와 사용되는  state 입니다.
+  const [isChecked, setIsChecked] = useState(false)
 
   return (
     <article>
@@ -117,17 +123,35 @@ const App = () => {
       </section>
 
       <section>
-        <h3>Footer</h3>
+        <h3>Footer (SpaceWak)</h3>
 
         <Footer
+          logoSrc={SpacewakTextLogo}
+          onClickTos={() => {
+            alert("이용약관 보여주세요")
+          }}
+          onClickPrivacyPolicy={() => {
+            alert("개인정보처리방침 보여주세요")
+          }}
           onClickContact={() => {
             alert("Modal Open!")
           }}
-          onClickTerm={() => {
+        />
+      </section>
+
+      <section>
+        <h3>Footer (WAKTAPLAY)</h3>
+
+        <Footer
+          logoSrc={WaktaplayTextLogo}
+          onClickTos={() => {
             alert("이용약관 보여주세요")
           }}
-          onClickUserInfo={() => {
+          onClickPrivacyPolicy={() => {
             alert("개인정보처리방침 보여주세요")
+          }}
+          onClickContact={() => {
+            alert("Modal Open!")
           }}
         />
       </section>
@@ -210,6 +234,43 @@ const App = () => {
       </section>
 
       <section>
+        <h3>Button</h3>
+        <article
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.5rem",
+            alignItems: "start",
+          }}
+        >
+          <Button.Text onClick={() => alert("Button Click!")}>Button Text</Button.Text>
+          <Button.Outline onClick={() => alert("Button Click!")}>Button Outline Small</Button.Outline>
+          <Button.Outline size="large" onClick={() => alert("Button Click!")}>
+            Button Outline large
+          </Button.Outline>
+          <Button.Fill size="small" onClick={() => alert("Button Click!")}>
+            Button Fill small gray
+          </Button.Fill>
+          <Button.Fill size="medium" color="primary" onClick={() => alert("Button Click!")}>
+            Button Fill medium primary
+          </Button.Fill>
+          <Button.Fill size="medium" cat color="primary" onClick={() => alert("Button Click!")}>
+            Button Fill medium CAT primary
+          </Button.Fill>
+          <Button.Fill size="large" onClick={() => alert("Button Click!")}>
+            Button Fill large gray
+          </Button.Fill>
+          <Button.More onChange={value => alert(`More Button Change Value: ${value ? "true" : "false"}`)} />
+        </article>
+      </section>
+
+      <section>
+        {/* 체크되면 글자색이 바뀝니다 */}
+        <H3 isChecked={isChecked}>CheckBox</H3>
+        <CheckBox text="checkbox" isChecked={isChecked} setIsChecked={setIsChecked} />
+      </section>
+
+      <section>
         <h3>Chip</h3>
         <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
           <Chip.Normal item={{ label: "텍스트", value: "txt" }} />
@@ -223,10 +284,11 @@ const App = () => {
 
 // TODO : 아래 스타일은 더미 내용물에 대한 스타일 이므로 지우셔도됩니다.
 
+// FOR : TABS
 const Unit = styled.div`
   width: 50px;
   height: 50px;
-  background-color: blue;
+  background-color: #0000ff;
   flex: 0 0 24%;
   margin: 0.5%;
 `
@@ -236,6 +298,11 @@ const FlexContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+`
+
+// FOR : CHECKBOX
+const H3 = styled.h3<{ isChecked: boolean }>`
+  color: ${({ isChecked }) => (isChecked ? "#0000ff" : "#ff0000")};
 `
 
 export default App
