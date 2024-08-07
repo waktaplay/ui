@@ -1,6 +1,5 @@
-import React, { useState } from "react"
-import ReactDOM from "react-dom/client"
-import styled, { css } from "styled-components"
+import { useState } from "react"
+import styled from "styled-components"
 
 import "normalize.css"
 import "./main.css"
@@ -12,12 +11,15 @@ import Tabs from "@components/Tabs"
 import TabShowMore from "@components/Tabs/elements/TabShowMore"
 import Filter from "@components/Filter"
 import CheckBox from "@/components/CheckBox"
+import Button from "@/components/Button"
+import ToastMessage from "@/components/ToastMessage"
 
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
 import Withdraw from "@assets/icons/withdraw.svg"
-import ToastMessage from "./components/ToastMessage"
-import Button from "./components/Button"
+
+import SpacewakTextLogo from "@assets/logo/spacewak-text-logo.svg"
+import WaktaplayTextLogo from "@assets/logo/waktaplay-text-logo.svg"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -121,17 +123,35 @@ const App = () => {
         </section>
 
         <section>
-          <h3>Footer</h3>
+          <h3>Footer (SpaceWak)</h3>
 
           <Footer
+            logoSrc={SpacewakTextLogo}
+            onClickTos={() => {
+              alert("이용약관 보여주세요")
+            }}
+            onClickPrivacyPolicy={() => {
+              alert("개인정보처리방침 보여주세요")
+            }}
             onClickContact={() => {
               alert("Modal Open!")
             }}
-            onClickTerm={() => {
+          />
+        </section>
+
+        <section>
+          <h3>Footer (WAKTAPLAY)</h3>
+
+          <Footer
+            logoSrc={WaktaplayTextLogo}
+            onClickTos={() => {
               alert("이용약관 보여주세요")
             }}
-            onClickUserInfo={() => {
+            onClickPrivacyPolicy={() => {
               alert("개인정보처리방침 보여주세요")
+            }}
+            onClickContact={() => {
+              alert("Modal Open!")
             }}
           />
         </section>
