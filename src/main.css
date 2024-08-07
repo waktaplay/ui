@@ -1,12 +1,12 @@
 @import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css");
 
-body {
-  margin: 30px 25px;
-  background: #191a1a;
+*,
+main {
+  color: white;
   font-family: "Wanted Sans Variable", "Wanted Sans", sans-serif;
 }
 
-* {
-  color: white;
-  font-family: "Wanted Sans Variable", "Wanted Sans", sans-serif;
+main {
+  padding: 30px 25px;
+  background: #191a1a;
 }

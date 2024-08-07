@@ -21,10 +21,10 @@ pnpm add @spacewak/ui
 To use the SpaceWak Design System, you can import the components you need from the package:
 
 ```tsx
-import { Button } from "@spacewak/ui";
+import { Button } from "@spacewak/ui"
 
 function App() {
-  return <Button>Click me!</Button>;
+  return <Button>Click me!</Button>
 }
 ```
 
