@@ -33,23 +33,21 @@ const Container = styled.div`
   padding: 24px 38px;
   width: fit-content;
   height: fit-content;
+  position: fixed;
   display: flex;
   border-radius: 10px;
-  position: fixed;
   z-index: 99;
   bottom: 2%;
-  left: 50vw;
-  transform: translateY(-50vw);
-  animation: fadeInUp 0.5s forwards;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: fadeInUp 0.3s forwards;
 
   @keyframes fadeInUp {
     0% {
       opacity: 0;
-      transform: translateY(20px);
     }
     100% {
       opacity: 1;
-      transform: translateY(0);
     }
   }
 `
