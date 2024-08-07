@@ -12,6 +12,7 @@ import TabShowMore from "@components/Tabs/elements/TabShowMore"
 import Filter from "@components/Filter"
 import CheckBox from "@/components/CheckBox"
 import Button from "@/components/Button"
+import Modal from "@/components/Modal"
 
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
@@ -96,6 +97,7 @@ const App = () => {
   const [isShowedMore, setIsShowedMore] = useState(false)
   //해당 isChecked state는 checkbox 와 사용되는  state 입니다.
   const [isChecked, setIsChecked] = useState(false)
+  const [modalToggle, setModalToggle] = useState(false)
 
   return (
     <article>
@@ -259,11 +261,44 @@ const App = () => {
           <Button.More onChange={value => alert(`More Button Change Value: ${value ? "true" : "false"}`)} />
         </article>
       </section>
-      
+
       <section>
         {/* 체크되면 글자색이 바뀝니다 */}
         <H3 isChecked={isChecked}>CheckBox</H3>
         <CheckBox text="checkbox" isChecked={isChecked} setIsChecked={setIsChecked} />
+      </section>
+
+      <section>
+        <h3>Modal</h3>
+        <button
+          onClick={() => {
+            setModalToggle(!modalToggle)
+          }}
+          style={{ color: "black" }}
+        >
+          모달 띄우기
+        </button>
+
+        {modalToggle && (
+          <Modal
+            onClose={() => {
+              setModalToggle(false)
+            }}
+            title="제목은 최대 18자 입력 가능해요"
+            description={`설명은 최대 59자\n2줄까지 입력 가능해요`}
+            button={
+              <Button.Fill
+                size="large"
+                color="primary"
+                onClick={() => {
+                  setModalToggle(false)
+                }}
+              >
+                버튼
+              </Button.Fill>
+            }
+          />
+        )}
       </section>
     </article>
   )
