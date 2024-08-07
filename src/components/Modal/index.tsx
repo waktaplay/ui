@@ -1,7 +1,8 @@
-import { ReactNode } from "react"
 import styled from "styled-components"
 
 import CloseSVG from "@/assets/icons/close.svg"
+import Button from "../Button"
+import { useEffect } from "react"
 
 const BgWrapper = styled.div`
   width: 100vw;
@@ -11,22 +12,7 @@ const BgWrapper = styled.div`
   left: 0;
 `
 
-const CloseBtnWrapper = styled.div`
-  display: flex;
-  justify-content: end;
-  &:hover {
-    cursor: pointer;
-  }
-`
-
-const BodyWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  padding: 0 16px;
-`
-
-const DefaultWrapper = styled.div`
+const ModalWrapper = styled.div`
   background: #191a1a;
   border-radius: 15px;
   padding: 24px;
@@ -59,31 +45,61 @@ const DefaultWrapper = styled.div`
   }
 `
 
+const CloseBtnWrapper = styled.div`
+  display: flex;
+  justify-content: end;
+  &:hover {
+    cursor: pointer;
+  }
+`
+
+const BodyWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0 16px;
+
+  .comments {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .description {
+      white-space: pre-wrap;
+    }
+  }
+`
+
 interface IDefault {
   title: string
   description: string
   onClose: () => void
-  button?: ReactNode
+  button?: boolean
+  buttonComment?: string
+  onClickBtn?: () => void
 }
 
-const Default = ({ title, description, button, onClose }: IDefault) => {
+const Default = ({ title, description, button = true, buttonComment, onClose, onClickBtn }: IDefault) => {
   return (
     <div>
       <BgWrapper />
-      <DefaultWrapper>
+      <ModalWrapper>
         <CloseBtnWrapper onClick={onClose}>
           <img src={CloseSVG} width={24} />
         </CloseBtnWrapper>
         <BodyWrapper>
-          <div style={{ display: "flex", flexDirection: "column", gap: "30px" }}>
-            <p className="title">{title}</p>
-            <p className="description" style={{ whiteSpace: "pre-wrap" }}>
-              {description}
-            </p>
+          <div className="comments">
+            <p className="title">{title.slice(0, 18)}</p>
+            <p className="description">{description.slice(0, 59)}</p>
           </div>
-          {button}
+
+          {button && (
+            <Button.Fill size="large" color="primary" onClick={onClickBtn}>
+              {buttonComment}
+            </Button.Fill>
+          )}
         </BodyWrapper>
-      </DefaultWrapper>
+      </ModalWrapper>
     </div>
   )
 }
