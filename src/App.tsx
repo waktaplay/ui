@@ -12,6 +12,7 @@ import TabShowMore from "@components/Tabs/elements/TabShowMore"
 import Filter from "@components/Filter"
 import CheckBox from "@/components/CheckBox"
 import Button from "@/components/Button"
+import ToastMessage from "@/components/ToastMessage"
 import Modal from "@/components/Modal"
 
 import FavorateSvg from "@assets/icons/favorate.svg"
@@ -95,206 +96,249 @@ const App = () => {
   //해당 selectedTabIndex,isShowedMore 두개의 state 들은 tabs UI 와 사용되는  state 입니다.
   const [selectedTabIndex, setSelectedTabIndex] = useState(0)
   const [isShowedMore, setIsShowedMore] = useState(false)
+  //해당 message state 들은 toastMessage UI 와 사용되는  state 입니다.
+  const [message, setMessage] = useState("")
   //해당 isChecked state는 checkbox 와 사용되는  state 입니다.
   const [isChecked, setIsChecked] = useState(false)
   const [modalToggle, setModalToggle] = useState(false)
 
   return (
-    <article>
-      <h2>SpaceWak Design System</h2>
+    <>
+      <main>
+        <h2>SpaceWak Design System</h2>
 
-      <section>
-        <h3>Card</h3>
+        <section>
+          <h3>Card</h3>
 
-        <Card>
-          <Card.Header>
-            <Card.Title>Lorem Ipsum</Card.Title>
-            <Card.Date>2023. 9. 5</Card.Date>
-          </Card.Header>
-          <Card.Divider />
-          <Card.Body>
-            <Card.Link type="naver_cafe" isLive={true}>
-              Hello World!
-            </Card.Link>
-          </Card.Body>
-        </Card>
-      </section>
+          <Card>
+            <Card.Header>
+              <Card.Title>Lorem Ipsum</Card.Title>
+              <Card.Date>2023. 9. 5</Card.Date>
+            </Card.Header>
+            <Card.Divider />
+            <Card.Body>
+              <Card.Link type="naver_cafe" isLive={true}>
+                Hello World!
+              </Card.Link>
+            </Card.Body>
+          </Card>
+        </section>
 
-      <section>
-        <h3>Footer (SpaceWak)</h3>
+        <section>
+          <h3>Footer (SpaceWak)</h3>
 
-        <Footer
-          logoSrc={SpacewakTextLogo}
-          onClickTos={() => {
-            alert("이용약관 보여주세요")
-          }}
-          onClickPrivacyPolicy={() => {
-            alert("개인정보처리방침 보여주세요")
-          }}
-          onClickContact={() => {
-            alert("Modal Open!")
-          }}
-        />
-      </section>
+          <Footer
+            logoSrc={SpacewakTextLogo}
+            onClickTos={() => {
+              alert("이용약관 보여주세요")
+            }}
+            onClickPrivacyPolicy={() => {
+              alert("개인정보처리방침 보여주세요")
+            }}
+            onClickContact={() => {
+              alert("Modal Open!")
+            }}
+          />
+        </section>
 
-      <section>
-        <h3>Footer (WAKTAPLAY)</h3>
+        <section>
+          <h3>Footer (WAKTAPLAY)</h3>
 
-        <Footer
-          logoSrc={WaktaplayTextLogo}
-          onClickTos={() => {
-            alert("이용약관 보여주세요")
-          }}
-          onClickPrivacyPolicy={() => {
-            alert("개인정보처리방침 보여주세요")
-          }}
-          onClickContact={() => {
-            alert("Modal Open!")
-          }}
-        />
-      </section>
+          <Footer
+            logoSrc={WaktaplayTextLogo}
+            onClickTos={() => {
+              alert("이용약관 보여주세요")
+            }}
+            onClickPrivacyPolicy={() => {
+              alert("개인정보처리방침 보여주세요")
+            }}
+            onClickContact={() => {
+              alert("Modal Open!")
+            }}
+          />
+        </section>
 
-      <section>
-        <h3>Menu</h3>
+        <section>
+          <h3>Menu</h3>
 
-        <Menu
-          selectedKey=""
-          itemList={[
-            {
-              icon: <img src={FavorateSvg} />,
-              label: "즐겨찾기",
-              value: "favorate",
-            },
-            {
-              icon: <img src={LogoutSvg} />,
-              label: "로그아웃",
-              value: "logOut",
-            },
-            {
-              icon: <img src={Withdraw} />,
-              label: "회원탈퇴",
-              value: "signOut",
-            },
-          ]}
-          onClick={() => {
-            alert("Menu Clicked!")
-          }}
-        />
-      </section>
+          <Menu
+            selectedKey=""
+            itemList={[
+              {
+                icon: <img src={FavorateSvg} />,
+                label: "즐겨찾기",
+                value: "favorate",
+              },
+              {
+                icon: <img src={LogoutSvg} />,
+                label: "로그아웃",
+                value: "logOut",
+              },
+              {
+                icon: <img src={Withdraw} />,
+                label: "회원탈퇴",
+                value: "signOut",
+              },
+            ]}
+            onClick={() => {
+              alert("Menu Clicked!")
+            }}
+          />
+        </section>
 
-      <section>
-        <h3>Tabs</h3>
+        <section>
+          <h3>Tabs</h3>
 
-        {/* INFO: 해당 tabs 컴포넌트는 탭 ui 자체 뿐만 아니라 useState로 탭 되는 부분이 바뀌는 기능이 더해져 있어 아래와 같은 형태를 띄어야 합니다. 좀더 한 파일에 넣고 싶었으나 사용성을 위해 살짝 재사용성과 가독성이 떨어진다는 점 유의 부탁드립니다
+          {/* INFO: 해당 tabs 컴포넌트는 탭 ui 자체 뿐만 아니라 useState로 탭 되는 부분이 바뀌는 기능이 더해져 있어 아래와 같은 형태를 띄어야 합니다. 좀더 한 파일에 넣고 싶었으나 사용성을 위해 살짝 재사용성과 가독성이 떨어진다는 점 유의 부탁드립니다
         
           ✅ props 는 TABS 와 CHIPS 가 있습니다. 원하는 tab 이름과 원하는 chip들을 삽입가능 합니다.
           ✅ uint은 임시로 넣어둔 것이니 원하는 컨텐츠를 넣어 사용하시면 됩니다 
           ✅ const [selectedTabIndex, setSelectedTabIndex] = useState(0) 해당 useState를 꼭 사용해주세요 */}
 
-        <div>
           <div>
-            <Tabs
-              TABS={TABS}
-              selectedTabIndex={selectedTabIndex}
-              setSelectedTabIndex={setSelectedTabIndex}
-              CHIPS={CHIPS}
-            />
-          </div>
-          {selectedTabIndex === 0 && (
-            <>
-              {/* INFO : 해당 태그에 들어가 있는 TabshowMore 테스트용 태그 입니다.
+            <div>
+              <Tabs
+                TABS={TABS}
+                selectedTabIndex={selectedTabIndex}
+                setSelectedTabIndex={setSelectedTabIndex}
+                CHIPS={CHIPS}
+              />
+            </div>
+            {selectedTabIndex === 0 && (
+              <>
+                {/* INFO : 해당 태그에 들어가 있는 TabshowMore 테스트용 태그 입니다.
 
                 ✅ const [isShowedMore, setIsShowedMore] = useState(false) 해당 useState를 꼭 함께 사용해주세요! */}
 
-              <FlexContainer>
-                {UNITS.map(UNIT => {
-                  return isShowedMore || UNIT.index < 8 ? <Unit key={UNIT.index}>{UNIT.title}</Unit> : null
-                })}
-              </FlexContainer>
-              <TabShowMore isShowedMore={isShowedMore} setIsShowedMore={setIsShowedMore} />
-            </>
-          )}
-          {selectedTabIndex === 1 && <div>2content2</div>}
-          {selectedTabIndex === 2 && <div>3content3</div>}
-        </div>
-      </section>
+                <FlexContainer>
+                  {UNITS.map(UNIT => {
+                    return isShowedMore || UNIT.index < 8 ? <Unit key={UNIT.index}>{UNIT.title}</Unit> : null
+                  })}
+                </FlexContainer>
+                <TabShowMore isShowedMore={isShowedMore} setIsShowedMore={setIsShowedMore} />
+              </>
+            )}
+            {selectedTabIndex === 1 && <div>2content2</div>}
+            {selectedTabIndex === 2 && <div>3content3</div>}
+          </div>
+        </section>
 
-      <section>
-        <h3>Filter Arrow</h3>
-        <Filter.Arrow
-          options={[
-            { label: "최신순", value: "newest" },
-            { label: "오래된순", value: "oldest" },
-            { label: "조회순", value: "views" },
-          ]}
-          onChange={value => alert(`filter 의 options 이 선택되었습니다 "${value}"`)}
-        />
-      </section>
-
-      <section>
-        <h3>Button</h3>
-        <article
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.5rem",
-            alignItems: "start",
-          }}
-        >
-          <Button.Text onClick={() => alert("Button Click!")}>Button Text</Button.Text>
-          <Button.Outline onClick={() => alert("Button Click!")}>Button Outline Small</Button.Outline>
-          <Button.Outline size="large" onClick={() => alert("Button Click!")}>
-            Button Outline large
-          </Button.Outline>
-          <Button.Fill size="small" onClick={() => alert("Button Click!")}>
-            Button Fill small gray
-          </Button.Fill>
-          <Button.Fill size="medium" color="primary" onClick={() => alert("Button Click!")}>
-            Button Fill medium primary
-          </Button.Fill>
-          <Button.Fill size="medium" cat color="primary" onClick={() => alert("Button Click!")}>
-            Button Fill medium CAT primary
-          </Button.Fill>
-          <Button.Fill size="large" onClick={() => alert("Button Click!")}>
-            Button Fill large gray
-          </Button.Fill>
-          <Button.More onChange={value => alert(`More Button Change Value: ${value ? "true" : "false"}`)} />
-        </article>
-      </section>
-
-      <section>
-        {/* 체크되면 글자색이 바뀝니다 */}
-        <H3 isChecked={isChecked}>CheckBox</H3>
-        <CheckBox text="checkbox" isChecked={isChecked} setIsChecked={setIsChecked} />
-      </section>
-
-      <section>
-        <h3>Modal</h3>
-        <button
-          onClick={() => {
-            setModalToggle(!modalToggle)
-          }}
-          style={{ color: "black" }}
-        >
-          모달 띄우기
-        </button>
-
-        {modalToggle && (
-          <Modal
-            onClose={() => {
-              setModalToggle(false)
-            }}
-            title="제목은 최대 18자 입력 가능해요"
-            description={`설명은 최대 59자\n2줄까지 입력 가능해요`}
-            button
-            buttonComment="버튼"
-            onClickBtn={() => {
-              alert("Button Clicked")
-            }}
+        <section>
+          <h3>Filter Arrow</h3>
+          <Filter.Arrow
+            options={[
+              { label: "최신순", value: "newest" },
+              { label: "오래된순", value: "oldest" },
+              { label: "조회순", value: "views" },
+            ]}
+            onChange={value => alert(`filter 의 options 이 선택되었습니다 "${value}"`)}
           />
-        )}
-      </section>
-    </article>
+        </section>
+
+        <section>
+          <h3>Button</h3>
+          <article
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.5rem",
+              alignItems: "start",
+            }}
+          >
+            <Button.Text onClick={() => alert("Button Click!")}>Button Text</Button.Text>
+            <Button.Outline onClick={() => alert("Button Click!")}>Button Outline Small</Button.Outline>
+            <Button.Outline size="large" onClick={() => alert("Button Click!")}>
+              Button Outline large
+            </Button.Outline>
+            <Button.Fill size="small" onClick={() => alert("Button Click!")}>
+              Button Fill small gray
+            </Button.Fill>
+            <Button.Fill size="medium" color="primary" onClick={() => alert("Button Click!")}>
+              Button Fill medium primary
+            </Button.Fill>
+            <Button.Fill size="medium" cat color="primary" onClick={() => alert("Button Click!")}>
+              Button Fill medium CAT primary
+            </Button.Fill>
+            <Button.Fill size="large" onClick={() => alert("Button Click!")}>
+              Button Fill large gray
+            </Button.Fill>
+            <Button.More onChange={value => alert(`More Button Change Value: ${value ? "true" : "false"}`)} />
+          </article>
+        </section>
+
+        <section>
+          {/* 체크되면 글자색이 바뀝니다 */}
+          <H3 isChecked={isChecked}>CheckBox</H3>
+          <CheckBox text="checkbox" isChecked={isChecked} setIsChecked={setIsChecked} />
+        </section>
+
+        <section>
+          <h3>ToastMessage</h3>
+          <Button.Fill
+            size="small"
+            onClick={() => {
+              try {
+                throw new Error("My 일정은 최대 9개까지 등록할 수 있어요.")
+              } catch (error) {
+                setMessage(error.message)
+              }
+              console.log(message)
+            }}
+          >
+            토스트 테스트 버튼 - My 일정은 최대 9개까지 등록할 수 있어요.
+          </Button.Fill>
+          &nbsp;&nbsp;
+          <Button.Fill
+            size="small"
+            onClick={() => {
+              try {
+                throw new Error("잘못된 형식입니다")
+              } catch (error) {
+                setMessage(error.message)
+              }
+              console.log(message)
+            }}
+          >
+            토스트 테스트 버튼2 - 잘못된 형식입니다
+          </Button.Fill>
+        </section>
+
+        <section>
+          {/* 체크되면 글자색이 바뀝니다 */}
+          <H3 isChecked={isChecked}>CheckBox</H3>
+          <CheckBox text="checkbox" isChecked={isChecked} setIsChecked={setIsChecked} />
+        </section>
+
+        <section>
+          <h3>Modal</h3>
+          <button
+            onClick={() => {
+              setModalToggle(!modalToggle)
+            }}
+            style={{ color: "black" }}
+          >
+            모달 띄우기
+          </button>
+
+          {modalToggle && (
+            <Modal
+              onClose={() => {
+                setModalToggle(false)
+              }}
+              title="제목은 최대 18자 입력 가능해요"
+              description={`설명은 최대 59자\n2줄까지 입력 가능해요`}
+              button
+              buttonComment="버튼"
+              onClickBtn={() => {
+                alert("Button Clicked")
+              }}
+            />
+          )}
+        </section>
+      </main>
+
+      <ToastMessage message={message} setMessage={setMessage} />
+    </>
   )
 }
 
