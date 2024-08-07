@@ -286,17 +286,11 @@ const App = () => {
             }}
             title="제목은 최대 18자 입력 가능해요"
             description={`설명은 최대 59자\n2줄까지 입력 가능해요`}
-            button={
-              <Button.Fill
-                size="large"
-                color="primary"
-                onClick={() => {
-                  setModalToggle(false)
-                }}
-              >
-                버튼
-              </Button.Fill>
-            }
+            button
+            buttonComment="버튼"
+            onClickBtn={() => {
+              alert("Button Clicked")
+            }}
           />
         )}
       </section>
