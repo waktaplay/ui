@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 import CloseSVG from "@/assets/icons/close.svg"
 import Button from "../Button"
-import { useEffect } from "react"
 
 const BgWrapper = styled.div`
   width: 100vw;
@@ -10,6 +9,7 @@ const BgWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  background: rgba(0, 0, 0, 0.6);
 `
 
 const ModalWrapper = styled.div`
