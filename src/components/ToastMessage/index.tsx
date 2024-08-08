@@ -38,18 +38,18 @@ const Container = styled.div`
   position: fixed;
   z-index: 99;
   bottom: 2%;
-  left: 50vw;
-  transform: translateY(-50vw);
+  left: 50%;
+  transform: translate(-50%, -50%);
   animation: fadeInUp 0.5s forwards;
 
   @keyframes fadeInUp {
     0% {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translate(-50%, 0%);
     }
     100% {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate(-50%, -50%);
     }
   }
 `
