@@ -96,8 +96,10 @@ const App = () => {
   //해당 selectedTabIndex,isShowedMore 두개의 state 들은 tabs UI 와 사용되는  state 입니다.
   const [selectedTabIndex, setSelectedTabIndex] = useState(0)
   const [isShowedMore, setIsShowedMore] = useState(false)
+
   //해당 message state 들은 toastMessage UI 와 사용되는  state 입니다.
-  const [message, setMessage] = useState("")
+  const [message, setMessage] = useState<string | null>(null)
+
   //해당 isChecked state는 checkbox 와 사용되는  state 입니다.
   const [isChecked, setIsChecked] = useState(false)
   const [modalToggle, setModalToggle] = useState(false)
@@ -304,21 +306,15 @@ const App = () => {
         </section>
 
         <section>
-          {/* 체크되면 글자색이 바뀝니다 */}
-          <H3 isChecked={isChecked}>CheckBox</H3>
-          <CheckBox text="checkbox" isChecked={isChecked} setIsChecked={setIsChecked} />
-        </section>
-
-        <section>
           <h3>Modal</h3>
-          <button
+          <Button.Fill
+            size="small"
             onClick={() => {
               setModalToggle(!modalToggle)
             }}
-            style={{ color: "black" }}
           >
             모달 띄우기
-          </button>
+          </Button.Fill>
 
           {modalToggle && (
             <Modal
