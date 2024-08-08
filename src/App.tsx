@@ -21,6 +21,7 @@ import Withdraw from "@assets/icons/withdraw.svg"
 
 import SpacewakTextLogo from "@assets/logo/spacewak-text-logo.svg"
 import WaktaplayTextLogo from "@assets/logo/waktaplay-text-logo.svg"
+import Video from "@/components/Video"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -330,6 +331,44 @@ const App = () => {
               }}
             />
           )}
+        </section>
+
+        <section>
+          <h3>Video</h3>
+          <article
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.5rem",
+              alignItems: "start",
+            }}
+          >
+            <Video
+              size="small"
+              src={`https://i.namu.wiki/i/Mw-fTEqVGGnjNK3UXcC6FIIZk8A33ptKZKaeoTePs-T_dL-AFGfYLolLt7LSSTKnp2kOadt5m4wRqk6L8MgfXuLJO70Gm6SaBZheVA0ClnTp3QUlRCd3NMpa6mLNU3DlVxhcFqKbZmPlOsDlU3ftMQ.webp`}
+              onClick={() => alert("video Click")}
+              favoriteOnclick={() => alert("favorite Click")}
+              date="2024년 9월 10일"
+              view={10}
+            />
+            <Video
+              size="medium"
+              src={`https://i.namu.wiki/i/Mw-fTEqVGGnjNK3UXcC6FIIZk8A33ptKZKaeoTePs-T_dL-AFGfYLolLt7LSSTKnp2kOadt5m4wRqk6L8MgfXuLJO70Gm6SaBZheVA0ClnTp3QUlRCd3NMpa6mLNU3DlVxhcFqKbZmPlOsDlU3ftMQ.webp`}
+              favorite
+              date="2024년 9월 10일"
+              view="10만"
+              member="multi"
+              memberMultiCount={3}
+            />
+            <Video
+              size="large"
+              src={`https://i.namu.wiki/i/Mw-fTEqVGGnjNK3UXcC6FIIZk8A33ptKZKaeoTePs-T_dL-AFGfYLolLt7LSSTKnp2kOadt5m4wRqk6L8MgfXuLJO70Gm6SaBZheVA0ClnTp3QUlRCd3NMpa6mLNU3DlVxhcFqKbZmPlOsDlU3ftMQ.webp`}
+              date="2024년 9월 10일"
+              view="150"
+              member="single"
+              memberSingleChip={<div>chips</div>}
+            />
+          </article>
         </section>
       </main>
 
