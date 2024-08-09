@@ -1,12 +1,14 @@
 import styled from "styled-components"
 
-const ChipNormalWrapper = styled.div`
+const ChipNormalWrapper = styled.div<{ primary: boolean }>`
   height: fit-content;
   width: fit-content;
   border-radius: 5px;
   padding: 8px 12px;
   gap: 4px;
   background: #242424;
+
+  ${({ primary }) => primary && `color: #47F998;`};
 
   &:hover {
     cursor: pointer;
@@ -20,10 +22,16 @@ const ChipNormalWrapper = styled.div`
 
 interface ChipNormalProps {
   item: { label: string; value: string }
+  onClick: (value: string) => void
+  primary?: boolean
 }
 
-const ChipNormal = ({ item }: ChipNormalProps) => {
-  return <ChipNormalWrapper>{item.label}</ChipNormalWrapper>
+const ChipNormal = ({ item, onClick, primary }: ChipNormalProps) => {
+  return (
+    <ChipNormalWrapper primary={primary} onClick={() => onClick(item.value)}>
+      {item.label}
+    </ChipNormalWrapper>
+  )
 }
 
 export default ChipNormal
