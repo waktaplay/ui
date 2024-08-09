@@ -9,8 +9,12 @@ const ChipNormalWrapper = styled.div`
   background: #242424;
 
   &:hover {
-    cursor: pointer !important;
-    background-color: rgba(255, 255, 255, 0.1) !important;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &:active {
+    background: rgba(255, 255, 255, 0.2);
   }
 `
 
