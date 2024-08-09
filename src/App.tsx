@@ -303,13 +303,6 @@ const App = () => {
           >
             토스트 테스트 버튼2 - 잘못된 형식입니다
           </Button.Fill>
-          <Button.Fill size="medium" cat color="primary" onClick={() => alert("Button Click!")}>
-            Button Fill medium CAT primary
-          </Button.Fill>
-          <Button.Fill size="large" onClick={() => alert("Button Click!")}>
-            Button Fill large gray
-          </Button.Fill>
-          <Button.More onChange={value => alert(`More Button Change Value: ${value ? "true" : "false"}`)} />
         </section>
 
         <section>
@@ -321,9 +314,25 @@ const App = () => {
         <section>
           <h3>Chip</h3>
           <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
-            <Chip.Normal item={{ label: "텍스트", value: "txt" }} />
-            <Chip.Small item={{ icon: ChunsikSVG, label: "곽춘식", value: "chunsik" }} />
-            <Chip.Middle item={{ icon: WaktaverseSVG, label: "왁타버스", value: "chunsik" }} />
+            <Chip.Normal
+              primary
+              item={{ label: "텍스트", value: "txt" }}
+              onClick={(value: string) => {
+                alert(`${value} selected`)
+              }}
+            />
+            <Chip.Small
+              item={{ icon: ChunsikSVG, label: "곽춘식", value: "chunsik", iconBgColor: "#1e301e" }}
+              onClick={(value: string) => {
+                alert(`${value} selected`)
+              }}
+            />
+            <Chip.Medium
+              item={{ icon: WaktaverseSVG, label: "왁타버스", value: "waktaverse" }}
+              onClick={(value: string) => {
+                alert(`${value} selected`)
+              }}
+            />
           </div>
         </section>
       </main>
