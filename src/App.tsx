@@ -14,6 +14,7 @@ import CheckBox from "@/components/CheckBox"
 import Button from "@/components/Button"
 import ToastMessage from "@/components/ToastMessage"
 import Chip from "@components/Chip"
+import Modal from "@/components/Modal"
 
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
@@ -99,10 +100,13 @@ const App = () => {
   //해당 selectedTabIndex,isShowedMore 두개의 state 들은 tabs UI 와 사용되는  state 입니다.
   const [selectedTabIndex, setSelectedTabIndex] = useState(0)
   const [isShowedMore, setIsShowedMore] = useState(false)
+
   //해당 message state 들은 toastMessage UI 와 사용되는  state 입니다.
-  const [message, setMessage] = useState("")
+  const [message, setMessage] = useState<string | null>(null)
+
   //해당 isChecked state는 checkbox 와 사용되는  state 입니다.
   const [isChecked, setIsChecked] = useState(false)
+  const [modalToggle, setModalToggle] = useState(false)
 
   return (
     <>
@@ -334,6 +338,30 @@ const App = () => {
               }}
             />
           </div>
+          <h3>Modal</h3>
+          <Button.Fill
+            size="small"
+            onClick={() => {
+              setModalToggle(!modalToggle)
+            }}
+          >
+            모달 띄우기
+          </Button.Fill>
+
+          {modalToggle && (
+            <Modal
+              onClose={() => {
+                setModalToggle(false)
+              }}
+              title="제목은 최대 18자 입력 가능해요"
+              description={`설명은 최대 59자\n2줄까지 입력 가능해요`}
+              button
+              buttonComment="버튼"
+              onClickBtn={() => {
+                alert("Button Clicked")
+              }}
+            />
+          )}
         </section>
       </main>
 
