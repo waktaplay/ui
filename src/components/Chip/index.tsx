@@ -1,7 +1,7 @@
 import Normal from "./Normal"
-import Middle from "./Middle"
+import Medium from "./Medium"
 import Small from "./Small"
 
-const Chip = Object.assign(Normal, { Normal, Middle, Small })
+const Chip = Object.assign(Normal, { Normal, Medium, Small })
 
 export default Chip
