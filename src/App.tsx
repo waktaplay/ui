@@ -18,9 +18,12 @@ import Modal from "@/components/Modal"
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
 import Withdraw from "@assets/icons/withdraw.svg"
+import Youtube from "@assets/icons/youtube.svg"
+import Link from "@assets/icons/link.svg"
 
 import SpacewakTextLogo from "@assets/logo/spacewak-text-logo.svg"
 import WaktaplayTextLogo from "@assets/logo/waktaplay-text-logo.svg"
+import LinkCalender from "./components/LinkCalender"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -330,6 +333,12 @@ const App = () => {
               }}
             />
           )}
+        </section>
+
+        <section>
+          <h3>Link Calender</h3>
+          <LinkCalender icon={Youtube} onClick={() => alert("link click")} />
+          <LinkCalender icon={Link} onClick={() => alert("link click")} />
         </section>
       </main>
 
