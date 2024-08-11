@@ -311,13 +311,7 @@ const App = () => {
         </section>
 
         <section>
-          {/* 체크되면 글자색이 바뀝니다 */}
-          <H3 isChecked={isChecked}>CheckBox</H3>
-          <CheckBox text="checkbox" isChecked={isChecked} setIsChecked={setIsChecked} />
-        </section>
-
-        <section>
-          <h3>Chip</h3>
+          <h3>Chips</h3>
           <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
             <Chip.Normal
               primary
