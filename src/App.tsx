@@ -13,6 +13,7 @@ import Filter from "@components/Filter"
 import CheckBox from "@/components/CheckBox"
 import Button from "@/components/Button"
 import ToastMessage from "@/components/ToastMessage"
+import Chip from "@components/Chip"
 import Modal from "@/components/Modal"
 
 import FavorateSvg from "@assets/icons/favorate.svg"
@@ -22,6 +23,9 @@ import Withdraw from "@assets/icons/withdraw.svg"
 import SpacewakTextLogo from "@assets/logo/spacewak-text-logo.svg"
 import WaktaplayTextLogo from "@assets/logo/waktaplay-text-logo.svg"
 import Video from "@/components/Video"
+
+import ChunsikSVG from "@assets/icons/members/gwakchunsik.svg"
+import WaktaverseSVG from "@assets/icons/group/waktaverse.svg"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -307,6 +311,34 @@ const App = () => {
         </section>
 
         <section>
+          {/* 체크되면 글자색이 바뀝니다 */}
+          <H3 isChecked={isChecked}>CheckBox</H3>
+          <CheckBox text="checkbox" isChecked={isChecked} setIsChecked={setIsChecked} />
+        </section>
+
+        <section>
+          <h3>Chip</h3>
+          <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
+            <Chip.Normal
+              primary
+              item={{ label: "텍스트", value: "txt" }}
+              onClick={(value: string) => {
+                alert(`${value} selected`)
+              }}
+            />
+            <Chip.Small
+              item={{ icon: ChunsikSVG, label: "곽춘식", value: "chunsik", iconBgColor: "#1e301e" }}
+              onClick={(value: string) => {
+                alert(`${value} selected`)
+              }}
+            />
+            <Chip.Medium
+              item={{ icon: WaktaverseSVG, label: "왁타버스", value: "waktaverse" }}
+              onClick={(value: string) => {
+                alert(`${value} selected`)
+              }}
+            />
+          </div>
           <h3>Modal</h3>
           <Button.Fill
             size="small"
