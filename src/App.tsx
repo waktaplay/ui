@@ -345,7 +345,7 @@ const App = () => {
           >
             <Video
               size="small"
-              src={`https://i.namu.wiki/i/Mw-fTEqVGGnjNK3UXcC6FIIZk8A33ptKZKaeoTePs-T_dL-AFGfYLolLt7LSSTKnp2kOadt5m4wRqk6L8MgfXuLJO70Gm6SaBZheVA0ClnTp3QUlRCd3NMpa6mLNU3DlVxhcFqKbZmPlOsDlU3ftMQ.webp`}
+              src="https://via.placeholder.com/267x150.png"
               onClick={() => alert("video Click")}
               favoriteOnclick={() => alert("favorite Click")}
               date="2024년 9월 10일"
@@ -353,7 +353,7 @@ const App = () => {
             />
             <Video
               size="medium"
-              src={`https://i.namu.wiki/i/Mw-fTEqVGGnjNK3UXcC6FIIZk8A33ptKZKaeoTePs-T_dL-AFGfYLolLt7LSSTKnp2kOadt5m4wRqk6L8MgfXuLJO70Gm6SaBZheVA0ClnTp3QUlRCd3NMpa6mLNU3DlVxhcFqKbZmPlOsDlU3ftMQ.webp`}
+              src="https://via.placeholder.com/341x189.png"
               favorite
               date="2024년 9월 10일"
               view="10만"
@@ -362,7 +362,7 @@ const App = () => {
             />
             <Video
               size="large"
-              src={`https://i.namu.wiki/i/Mw-fTEqVGGnjNK3UXcC6FIIZk8A33ptKZKaeoTePs-T_dL-AFGfYLolLt7LSSTKnp2kOadt5m4wRqk6L8MgfXuLJO70Gm6SaBZheVA0ClnTp3QUlRCd3NMpa6mLNU3DlVxhcFqKbZmPlOsDlU3ftMQ.webp`}
+              src="https://via.placeholder.com/356x200.png"
               date="2024년 9월 10일"
               view="150"
               member="single"
