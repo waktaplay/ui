@@ -21,6 +21,7 @@ import Withdraw from "@assets/icons/withdraw.svg"
 
 import SpacewakTextLogo from "@assets/logo/spacewak-text-logo.svg"
 import WaktaplayTextLogo from "@assets/logo/waktaplay-text-logo.svg"
+import Video from "@/components/Video"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -330,6 +331,44 @@ const App = () => {
               }}
             />
           )}
+        </section>
+
+        <section>
+          <h3>Video</h3>
+          <article
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.5rem",
+              alignItems: "start",
+            }}
+          >
+            <Video
+              size="small"
+              src="https://via.placeholder.com/267x150.png"
+              onClick={() => alert("video Click")}
+              favoriteOnclick={() => alert("favorite Click")}
+              date="2024년 9월 10일"
+              view={10}
+            />
+            <Video
+              size="medium"
+              src="https://via.placeholder.com/341x189.png"
+              favorite
+              date="2024년 9월 10일"
+              view="10만"
+              member="multi"
+              memberMultiCount={3}
+            />
+            <Video
+              size="large"
+              src="https://via.placeholder.com/356x200.png"
+              date="2024년 9월 10일"
+              view="150"
+              member="single"
+              memberSingleChip={<div>chips</div>}
+            />
+          </article>
         </section>
       </main>
 
