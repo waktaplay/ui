@@ -26,6 +26,7 @@ import Video from "@/components/Video"
 
 import ChunsikSVG from "@assets/icons/members/gwakchunsik.svg"
 import WaktaverseSVG from "@assets/icons/group/waktaverse.svg"
+import Artist from "./components/Artist"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -395,6 +396,12 @@ const App = () => {
               memberSingleChip={<div>chips</div>}
             />
           </article>
+        </section>
+
+        <section>
+          <h3>Artist Circle</h3>
+          <Artist.Circle artistId="ine" />
+          <Artist.Circle artistId="jingburger" checked />
         </section>
       </main>
 
