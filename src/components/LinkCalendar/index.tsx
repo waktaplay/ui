@@ -26,7 +26,7 @@ const Container = styled.button`
   }
 `
 
-const LinkCalender = ({ icon, onClick }: { icon: string; onClick?: () => void }) => {
+const LinkCalendar = ({ icon, onClick }: { icon: string; onClick?: () => void }) => {
   return (
     <Container onClick={onClick}>
       <img src={icon} alt="" />
@@ -38,4 +38,4 @@ const LinkCalender = ({ icon, onClick }: { icon: string; onClick?: () => void })
   )
 }
 
-export default LinkCalender
+export default LinkCalendar
