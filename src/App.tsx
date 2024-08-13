@@ -15,14 +15,17 @@ import Button from "@/components/Button"
 import ToastMessage from "@/components/ToastMessage"
 import Chip from "@components/Chip"
 import Modal from "@/components/Modal"
+import LinkCalendar from "@/components/LinkCalendar"
+import Video from "@/components/Video"
 
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
 import Withdraw from "@assets/icons/withdraw.svg"
+import Youtube from "@assets/icons/youtube.svg"
+import Link from "@assets/icons/link.svg"
 
 import SpacewakTextLogo from "@assets/logo/spacewak-text-logo.svg"
 import WaktaplayTextLogo from "@assets/logo/waktaplay-text-logo.svg"
-import Video from "@/components/Video"
 
 import ChunsikSVG from "@assets/icons/members/gwakchunsik.svg"
 import WaktaverseSVG from "@assets/icons/group/waktaverse.svg"
@@ -396,6 +399,12 @@ const App = () => {
               memberSingleChip={<div>chips</div>}
             />
           </article>
+        </section>
+
+        <section>
+          <h3>Link Calendar</h3>
+          <LinkCalendar icon={Youtube} onClick={() => alert("link click")} />
+          <LinkCalendar icon={Link} onClick={() => alert("link click")} />
         </section>
 
         <section>
