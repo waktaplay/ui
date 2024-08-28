@@ -16,7 +16,7 @@ configure_npm() {
     if command -v npm >/dev/null 2>&1; then
         echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> .npmrc
         echo "@waktaplay:registry=https://npm.pkg.github.com" >> .npmrc
-        echo ".npmrc" >> .gitignore
+        # echo ".npmrc" >> .gitignore
 
         echo "Registry setup is complete."
         read -s -n 1

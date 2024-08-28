@@ -12,7 +12,7 @@ function Configure-Npm {
     if (Get-Command "npm" -ErrorAction SilentlyContinue) {
         Add-Content -Path .npmrc -Value "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN"
         Add-Content -Path .npmrc -Value "@waktaplay:registry=https://npm.pkg.github.com"
-        Add-Content -Path .gitignore -Value ".npmrc"
+        # Add-Content -Path .gitignore -Value ".npmrc"
         Read-Host -Prompt ""
     } else {
         Write-Output "Could not check if node.js is installed, so registry setup failed."
