@@ -2,12 +2,10 @@ import { SetStateAction, useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import styled from "styled-components"
 
-interface IProps {
+const ToastMessage = ({ message, setMessage }: {
   message: string
   setMessage: React.Dispatch<SetStateAction<string>>
-}
-
-const ToastMessage = ({ message, setMessage }: IProps) => {
+}) => {
   const [fadeType, setFadeType] = useState<"fadeInUp" | "fadeOutDown">("fadeInUp") // fadeOut 애니메이션도 추가하기
 
   const timer = useRef<number | null>(null) // FadeOut Timer

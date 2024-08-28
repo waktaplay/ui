@@ -1,23 +1,31 @@
 {
-  "name": "@spacewak/ui",
-  "private": true,
-  "version": "2.0.0",
+  "name": "@waktaplay/ui",
+  "version": "1.0.0",
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "UNLICENSED",
+  "author": "Team Spacewak <contact@spacewak.net>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waktaplay/ui.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepublish": "tsup"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^6.1.12",
-    "vite-plugin-svgr": "^4.2.0",
-    "vite-tsconfig-paths": "^4.3.2"
+    "styled-components": "^6.1.12"
   },
   "devDependencies": {
+    "normalize.css": "^8.0.1",
+    "vite-plugin-svgr": "^4.2.0",
+    "vite-tsconfig-paths": "^4.3.2",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
@@ -30,10 +38,24 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.9",
     "prettier": "^3.3.3",
+    "terser": "^5.31.6",
+    "tsup": "^8.2.4",
     "typescript": "^5.5.4",
     "vite": "^5.3.5"
   },
-  "author": "Team Spacewak <contact@spacewak.net>",
-  "license": "UNLICENSED",
+  "tsup": {
+    "entry": [
+      "src/components/**/*.ts?(x)"
+    ],
+    "minify": "terser",
+    "format": [
+      "esm"
+    ],
+    "dts": true,
+    "splitting": true,
+    "clean": true,
+    "treeshake": true,
+    "bundle": false
+  },
   "packageManager": "pnpm@9.7.0+sha512.dc09430156b427f5ecfc79888899e1c39d2d690f004be70e05230b72cb173d96839587545d09429b55ac3c429c801b4dc3c0e002f653830a420fa2dd4e3cf9cf"
 }

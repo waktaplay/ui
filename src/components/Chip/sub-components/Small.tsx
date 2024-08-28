@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { IChipSmallProps } from "../types";
 
 const ChipSmallWrapper = styled.div<{ primary: boolean }>`
   display: flex;
@@ -32,13 +33,7 @@ const ProfileBgWrapper = styled.div<{ iconBgColor: string }>`
   width: 30px;
 `
 
-interface IChipProps {
-  item: { icon: string; label: string; value: string; iconBgColor?: string }
-  onClick: (value: string) => void
-  primary?: boolean
-}
-
-const ChipSmall = ({ item, onClick, primary }: IChipProps) => {
+const ChipSmall = ({ item, onClick, primary }: IChipSmallProps) => {
   return (
     <ChipSmallWrapper primary={primary} onClick={() => onClick(item.value)}>
       <ProfileBgWrapper iconBgColor={item.iconBgColor}>

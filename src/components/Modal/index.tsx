@@ -70,16 +70,14 @@ const BodyWrapper = styled.div`
   }
 `
 
-interface IDefault {
+const Default = ({ title, description, button = true, buttonComment, onClose, onClickBtn }: {
   title: string
   description: string
   onClose: () => void
   button?: boolean
   buttonComment?: string
   onClickBtn?: () => void
-}
-
-const Default = ({ title, description, button = true, buttonComment, onClose, onClickBtn }: IDefault) => {
+}) => {
   return (
     <div>
       <BgWrapper />

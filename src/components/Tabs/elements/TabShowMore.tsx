@@ -4,11 +4,10 @@ import ArrowDownIcon from "@/assets/icons/arrow_small_down.svg"
 import ArrowUpIcon from "@/assets/icons/arrow_small_up.svg"
 // MEMO: Page Tab Header
 
-interface IProps {
+const TabShowMore = ({ isShowedMore, setIsShowedMore }: {
   isShowedMore: Boolean
   setIsShowedMore: React.Dispatch<SetStateAction<Boolean>>
-}
-const TabShowMore = ({ isShowedMore, setIsShowedMore }: IProps) => {
+}) => {
   return (
     <Container>
       <ShowMoreBtn
