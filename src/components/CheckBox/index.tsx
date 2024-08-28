@@ -3,12 +3,11 @@ import styled from "styled-components"
 import CheckboxChecked from "@/assets/icons/checkbox_filled.svg"
 import CheckboxUnchecked from "@/assets/icons/checkbox_unfilled.svg"
 
-interface IProps {
+const CheckBox = ({ text, isChecked = false, setIsChecked }: {
   text: string
   isChecked: boolean
   setIsChecked: React.Dispatch<React.SetStateAction<boolean>>
-}
-const CheckBox = ({ text, isChecked = false, setIsChecked }: IProps) => {
+}) => {
   return (
     <Container htmlFor="checkBoxId">
       <HiddenCheckbox

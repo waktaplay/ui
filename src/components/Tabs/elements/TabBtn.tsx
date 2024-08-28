@@ -1,15 +1,14 @@
 import React, { useState } from "react"
 import styled from "styled-components"
 
-interface IProps {
+const TabBtn = ({ children, onClick = () => {}, active = false, focused = true, text = "", style }: {
   children?: React.ReactNode
   onClick?: (e?: React.MouseEvent<HTMLElement>) => void
   active?: boolean
   focused?: boolean
   text: string
   style?: React.CSSProperties
-}
-const TabBtn = ({ children, onClick = () => {}, active = false, focused = true, text = "", style }: IProps) => {
+}) => {
   const [hover, setHover] = useState(false)
 
   const renderButtonOpacity = () => {

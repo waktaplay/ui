@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { IChipBaseProps } from "../types"
 
 const ChipNormalWrapper = styled.div<{ primary: boolean }>`
   height: fit-content;
@@ -20,13 +21,7 @@ const ChipNormalWrapper = styled.div<{ primary: boolean }>`
   }
 `
 
-interface ChipNormalProps {
-  item: { label: string; value: string }
-  onClick: (value: string) => void
-  primary?: boolean
-}
-
-const ChipNormal = ({ item, onClick, primary }: ChipNormalProps) => {
+const ChipNormal = ({ item, onClick, primary }: IChipBaseProps) => {
   return (
     <ChipNormalWrapper primary={primary} onClick={() => onClick(item.value)}>
       {item.label}

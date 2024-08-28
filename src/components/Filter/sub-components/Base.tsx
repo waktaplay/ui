@@ -1,12 +1,6 @@
 import { Dispatch, ReactElement, SetStateAction, useEffect, useRef } from "react"
 import styled from "styled-components"
 
-interface FilterBaseProps {
-  children: Array<ReactElement | string>
-  active: boolean
-  setActive: Dispatch<SetStateAction<boolean>>
-}
-
 const FilterContainer = styled.div`
   position: relative;
 `
@@ -39,7 +33,11 @@ const FilterActiveControlInput = styled.input`
   pointer-events: none;
 `
 
-const FilterBase = ({ children, active, setActive }: FilterBaseProps) => {
+const FilterBase = ({ children, active, setActive }: {
+  children: Array<ReactElement | string>
+  active: boolean
+  setActive: Dispatch<SetStateAction<boolean>>
+}) => {
   const inputRef = useRef<HTMLInputElement>(null)
 
   // filter active 시 스크롤 disable

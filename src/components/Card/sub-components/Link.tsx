@@ -4,16 +4,12 @@ import jump from "@assets/icons/jump.svg"
 import link from "@assets/icons/link.svg"
 import youtube from "@assets/icons/youtube.svg"
 
+import { ICardLink } from "../types"
+
 const LinkIcons = {
   youtube,
   naver_cafe: link,
 } satisfies Record<string, string>
-
-interface CardLink {
-  type?: keyof typeof LinkIcons
-  isLive?: boolean
-  children?: string
-}
 
 const CardLinkButton = styled.button`
   box-sizing: border-box;
@@ -27,7 +23,7 @@ const CardLinkButton = styled.button`
   border: none;
 `
 
-const CardLinkCaption = styled.div<Pick<CardLink, "isLive">>`
+const CardLinkCaption = styled.div<Pick<ICardLink<keyof typeof LinkIcons>, "isLive">>`
   font-size: 13px;
   font-style: normal;
   font-weight: 500;
@@ -37,7 +33,7 @@ const CardLinkCaption = styled.div<Pick<CardLink, "isLive">>`
   color: ${({ isLive }) => (isLive ? "rgba(183, 251, 156, 1)" : "rgba(145, 145, 145, 1)")};
 `
 
-const CardLink = ({ type, isLive, children }: CardLink) => {
+const CardLink = ({ type, isLive, children }: ICardLink<keyof typeof LinkIcons>) => {
   const iconSrc = type ? LinkIcons[type] : ""
 
   return (

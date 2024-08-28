@@ -12,14 +12,12 @@ interface IChip {
   name: string
 }
 
-interface IProps {
+const Tabs = ({ TABS, CHIPS, selectedTabIndex, setSelectedTabIndex }: {
   TABS: IItem[]
   CHIPS: IChip[]
   selectedTabIndex: Number
   setSelectedTabIndex: React.Dispatch<SetStateAction<number>>
-}
-
-const Tabs = ({ TABS, CHIPS, selectedTabIndex, setSelectedTabIndex }: IProps) => {
+}) => {
   return (
     <Container>
       <TopWrapper>

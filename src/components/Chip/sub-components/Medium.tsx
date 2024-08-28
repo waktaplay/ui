@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { IChipMediumProps } from "../types"
 
 const ChipMediumWrapper = styled.div<{ primary: boolean }>`
   display: flex;
@@ -27,13 +28,7 @@ const ChipMediumWrapper = styled.div<{ primary: boolean }>`
   }
 `
 
-interface IChipProps {
-  item: { icon: string; label: string; value: string }
-  onClick: (value: string) => void
-  primary?: boolean
-}
-
-const ChipMiddle = ({ item, onClick, primary }: IChipProps) => {
+const ChipMiddle = ({ item, onClick, primary }: IChipMediumProps) => {
   return (
     <ChipMediumWrapper primary={primary} onClick={() => onClick(item.value)}>
       <img src={item.icon} height={20} style={{ zIndex: 1 }} />
