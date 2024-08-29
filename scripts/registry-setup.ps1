@@ -9,7 +9,7 @@
 $GITHUB_TOKEN = Read-Host "Enter your GitHub Personal Access Token"
 
 # Check if the token is empty or does not start with 'ghp_'
-if ([string]::IsNullOrWhiteSpace($GITHUB_TOKEN) -or $GITHUB_TOKEN -notlike "ghp_*") {
+if ([string]::IsNullOrWhiteSpace($GITHUB_TOKEN)) {
     Write-Output "Please provide a valid GitHub Personal Access Token. It should start with ghp_."
     Read-Host -Prompt ""
     exit 1
