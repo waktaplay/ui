@@ -16,7 +16,11 @@ Start-Process '.\registry-setup.ps1' -Wait
 Remove-Item '.\registry-setup.ps1'
 
 # macOS or Unix/Linux
-curl 'https://github.com/waktaplay/ui/raw/main/scripts/registry-setup.sh' | bash
+curl -fsSL 'https://github.com/waktaplay/ui/raw/main/scripts/registry-setup.sh' -o registry-setup.sh
+chmod +x registry-setup.sh
+
+./registry-setup.sh
+rm registry-setup.sh
 ```
 
 To install the SpaceWak Design System, you can use the following command:
