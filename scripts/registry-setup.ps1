@@ -8,12 +8,18 @@
 # Prompt the user for their GitHub Personal Access Token
 $GITHUB_TOKEN = Read-Host "Enter your GitHub Personal Access Token"
 
+# Check if the token is empty or does not start with 'ghp_'
+if ([string]::IsNullOrWhiteSpace($GITHUB_TOKEN) -or $GITHUB_TOKEN -notlike "ghp_*") {
+    Write-Output "Please provide a valid GitHub Personal Access Token. It should start with ghp_."
+    Read-Host -Prompt ""
+    exit 1
+}
+
 function Configure-Npm {
     if (Get-Command "npm" -ErrorAction SilentlyContinue) {
         Add-Content -Path .npmrc -Value "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN"
         Add-Content -Path .npmrc -Value "@waktaplay:registry=https://npm.pkg.github.com"
         # Add-Content -Path .gitignore -Value ".npmrc"
-        Read-Host -Prompt ""
     } else {
         Write-Output "Could not check if node.js is installed, so registry setup failed."
         Write-Output "Please check again whether node.js is installed properly."

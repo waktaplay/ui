@@ -12,14 +12,17 @@
 read -p "Enter your GitHub Personal Access Token: " GITHUB_TOKEN
 echo
 
+if [[ -z "$GITHUB_TOKEN" ]] || [[ $GITHUB_TOKEN == ghp_* ]]; then
+    echo "Please provide a valid GitHub Personal Access Token. It should start with ghp_."
+    read -s -n 1
+    exit 1
+fi
+
 configure_npm() {
     if command -v npm >/dev/null 2>&1; then
         echo "//npm.pkg.github.com/:_authToken=$GITHUB_TOKEN" >> .npmrc
         echo "@waktaplay:registry=https://npm.pkg.github.com" >> .npmrc
         # echo ".npmrc" >> .gitignore
-
-        echo "Registry setup is complete."
-        read -s -n 1
     else
         echo "Could not check if node.js is installed, so registry setup failed."
         echo "Please check again whether node.js is installed properly."
