@@ -12,7 +12,7 @@
 read -p "Enter your GitHub Personal Access Token: " GITHUB_TOKEN
 echo
 
-if [[ -z "$GITHUB_TOKEN" ]] || [[ $GITHUB_TOKEN == ghp_* ]]; then
+if [[ -z "$GITHUB_TOKEN" ]] || [[ $GITHUB_TOKEN =~ ^ghp_ ]]; then
     echo "Please provide a valid GitHub Personal Access Token. It should start with ghp_."
     read -s -n 1
     exit 1
