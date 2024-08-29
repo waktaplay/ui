@@ -13,16 +13,24 @@ import Filter from "@components/Filter"
 import CheckBox from "@/components/CheckBox"
 import Button from "@/components/Button"
 import ToastMessage from "@/components/ToastMessage"
+import Chip from "@components/Chip"
 import Modal from "@/components/Modal"
 import Notification from "@/components/List/Notification"
+import LinkCalendar from "@/components/LinkCalendar"
+import Video from "@/components/Video"
 
 import FavorateSvg from "@assets/icons/favorate.svg"
 import LogoutSvg from "@assets/icons/out.svg"
 import Withdraw from "@assets/icons/withdraw.svg"
+import Youtube from "@assets/icons/youtube.svg"
+import Link from "@assets/icons/link.svg"
 
 import SpacewakTextLogo from "@assets/logo/spacewak-text-logo.svg"
 import WaktaplayTextLogo from "@assets/logo/waktaplay-text-logo.svg"
 import { IElementProps } from "./components/List/Element"
+
+import ChunsikSVG from "@assets/icons/members/gwakchunsik.svg"
+import WaktaverseSVG from "@assets/icons/group/waktaverse.svg"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -338,6 +346,28 @@ const App = () => {
         </section>
 
         <section>
+          <h3>Chips</h3>
+          <div style={{ display: "flex", flexDirection: "row", gap: "10px" }}>
+            <Chip.Normal
+              primary
+              item={{ label: "텍스트", value: "txt" }}
+              onClick={(value: string) => {
+                alert(`${value} selected`)
+              }}
+            />
+            <Chip.Small
+              item={{ icon: ChunsikSVG, label: "곽춘식", value: "chunsik", iconBgColor: "#1e301e" }}
+              onClick={(value: string) => {
+                alert(`${value} selected`)
+              }}
+            />
+            <Chip.Medium
+              item={{ icon: WaktaverseSVG, label: "왁타버스", value: "waktaverse" }}
+              onClick={(value: string) => {
+                alert(`${value} selected`)
+              }}
+            />
+          </div>
           <h3>Modal</h3>
           <Button.Fill
             size="small"
@@ -362,6 +392,50 @@ const App = () => {
               }}
             />
           )}
+        </section>
+
+        <section>
+          <h3>Video</h3>
+          <article
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.5rem",
+              alignItems: "start",
+            }}
+          >
+            <Video
+              size="small"
+              src="https://via.placeholder.com/267x150.png"
+              onClick={() => alert("video Click")}
+              favoriteOnclick={() => alert("favorite Click")}
+              date="2024년 9월 10일"
+              view={10}
+            />
+            <Video
+              size="medium"
+              src="https://via.placeholder.com/341x189.png"
+              favorite
+              date="2024년 9월 10일"
+              view="10만"
+              member="multi"
+              memberMultiCount={3}
+            />
+            <Video
+              size="large"
+              src="https://via.placeholder.com/356x200.png"
+              date="2024년 9월 10일"
+              view="150"
+              member="single"
+              memberSingleChip={<div>chips</div>}
+            />
+          </article>
+        </section>
+
+        <section>
+          <h3>Link Calendar</h3>
+          <LinkCalendar icon={Youtube} onClick={() => alert("link click")} />
+          <LinkCalendar icon={Link} onClick={() => alert("link click")} />
         </section>
 
         <section>
