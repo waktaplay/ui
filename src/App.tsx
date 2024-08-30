@@ -24,13 +24,12 @@ import LogoutSvg from "@assets/icons/out.svg"
 import Withdraw from "@assets/icons/withdraw.svg"
 import Youtube from "@assets/icons/youtube.svg"
 import Link from "@assets/icons/link.svg"
-
 import SpacewakTextLogo from "@assets/logo/spacewak-text-logo.svg"
 import WaktaplayTextLogo from "@assets/logo/waktaplay-text-logo.svg"
-import { IElementProps } from "./components/List/Element"
-
 import ChunsikSVG from "@assets/icons/members/gwakchunsik.svg"
 import WaktaverseSVG from "@assets/icons/group/waktaverse.svg"
+
+import { IElementProps } from "@components/List/types"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -109,7 +108,7 @@ const notificationSample: IElementProps[] = [
     view: false,
     createdAt: "2시간 전",
     category: "게시판",
-    type: "favorit",
+    type: "favorite",
     time: null,
   },
   {
@@ -128,7 +127,7 @@ const notificationSample: IElementProps[] = [
     createdAt: "2시간 전",
     category: "왁타플레이",
     link: "https://www.youtube.com/@waktaverse",
-    type: "favorit",
+    type: "favorite",
   },
 ]
 
