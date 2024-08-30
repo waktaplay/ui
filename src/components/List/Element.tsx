@@ -3,6 +3,8 @@ import styled from "styled-components"
 import PopupSVG from "@/assets/icons/popup.svg"
 import Calender from "@/assets/icons/schedule_calendar.svg"
 
+import { IElementProps } from "./types"
+
 const ElementWrapper = styled.div`
   height: 40px;
   align-items: center;
@@ -111,17 +113,6 @@ const DescriptionsWrapper = styled.div`
   }
 `
 
-export interface IElementProps {
-  icon: string
-  content: string
-  view: boolean
-  createdAt: string
-  category: string
-  type: "calendar" | "favorit"
-  time?: string | null
-  link?: string
-}
-
 const NotificationElement = ({ icon, content, view, createdAt, category, type, time, link }: IElementProps) => {
   // link icon click event - move to link
   const onClickLink = () => {
@@ -134,7 +125,7 @@ const NotificationElement = ({ icon, content, view, createdAt, category, type, t
         {!view && <DotWrapper />}
         <IconBgWrapper>
           {type === "calendar" && <img className="calendar" src={Calender} width={24} height={24} />}
-          {type === "favorit" && <img src={icon} width={40} height={40} />}
+          {type === "favorite" && <img src={icon} width={40} height={40} />}
         </IconBgWrapper>
       </IconWrapper>
 
@@ -152,8 +143,8 @@ const NotificationElement = ({ icon, content, view, createdAt, category, type, t
           <div className="content" title={content}>
             {content}
           </div>
-          {/* [type]이 "favorit"이고, [link]값이 있으면 바로가기 아이콘이 보임 */}
-          {link && type === "favorit" && (
+          {/* [type]이 "favorite"이고, [link]값이 있으면 바로가기 아이콘이 보임 */}
+          {link && type === "favorite" && (
             <img className="link" src={PopupSVG} width={18} height={18} onClick={onClickLink} />
           )}
         </DescriptionsWrapper>

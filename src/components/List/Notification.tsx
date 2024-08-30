@@ -14,7 +14,7 @@ interface IElementProps {
     view: boolean
     createdAt: string
     category: string
-    type: "calendar" | "favorit"
+    type: "calendar" | "favorite"
     time?: string | null
     link?: string
   }[]
