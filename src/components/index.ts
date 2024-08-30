@@ -19,4 +19,4 @@ export { default as Modal } from "./Modal"
 export { default as ToastMessage } from "./ToastMessage"
 
 export { default as ListNotification } from "./List/Notification"
-export { IElementProps } from "./List/types"
+export type { IElementProps } from "./List/types"
