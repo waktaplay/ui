@@ -15,6 +15,7 @@ import Button from "@/components/Button"
 import ToastMessage from "@/components/ToastMessage"
 import Chip from "@components/Chip"
 import Modal from "@/components/Modal"
+import Notification from "@/components/List/Notification"
 import LinkCalendar from "@/components/LinkCalendar"
 import Video from "@/components/Video"
 
@@ -23,12 +24,12 @@ import LogoutSvg from "@assets/icons/out.svg"
 import Withdraw from "@assets/icons/withdraw.svg"
 import Youtube from "@assets/icons/youtube.svg"
 import Link from "@assets/icons/link.svg"
-
 import SpacewakTextLogo from "@assets/logo/spacewak-text-logo.svg"
 import WaktaplayTextLogo from "@assets/logo/waktaplay-text-logo.svg"
-
 import ChunsikSVG from "@assets/icons/members/gwakchunsik.svg"
 import WaktaverseSVG from "@assets/icons/group/waktaverse.svg"
+
+import { IElementProps } from "@components/List/types"
 
 // TODO : 아래 더미데이터들은 원하는 내용으로 바꾸시면 되고 unit은 지우셔도 무방합니다.
 const TABS = [
@@ -97,6 +98,36 @@ const UNITS = [
   {
     index: 8,
     title: "UNIT 8",
+  },
+]
+
+const notificationSample: IElementProps[] = [
+  {
+    icon: SpacewakTextLogo,
+    content: "왁타버스 시작",
+    view: false,
+    createdAt: "2시간 전",
+    category: "게시판",
+    type: "favorite",
+    time: null,
+  },
+  {
+    icon: SpacewakTextLogo,
+    content: "왁타버스 1 이렇게 길게 만들어 보면 어떻게 될까요 한번 가시보죠",
+    view: true,
+    createdAt: "2시간 전",
+    category: "왁타플레이",
+    time: "오후 12시 45분",
+    type: "calendar",
+  },
+  {
+    icon: SpacewakTextLogo,
+    content: '"왁타버스" 님이 "스페이스왁"을 친구 추가 했습니다.',
+    view: true,
+    createdAt: "2시간 전",
+    category: "왁타플레이",
+    link: "https://www.youtube.com/@waktaverse",
+    type: "favorite",
   },
 ]
 
@@ -404,6 +435,12 @@ const App = () => {
           <h3>Link Calendar</h3>
           <LinkCalendar icon={Youtube} onClick={() => alert("link click")} />
           <LinkCalendar icon={Link} onClick={() => alert("link click")} />
+        </section>
+
+        <section>
+          <h3>Notification</h3>
+
+          <Notification itemList={notificationSample} />
         </section>
       </main>
 
