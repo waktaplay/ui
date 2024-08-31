@@ -1,10 +1,4 @@
 import styled from "styled-components"
-import ine from "@assets/icons/members/ine.svg"
-import jingburger from "@assets/icons/members/jingburger.svg"
-import lilpa from "@assets/icons/members/lilpa.svg"
-import jururu from "@assets/icons/members/jururu.svg"
-import gosegu from "@assets/icons/members/gosegu.svg"
-import viichan from "@assets/icons/members/viichan.svg"
 import CheckLineYellowgreen from "@assets/icons/check_line_yellowgreen.svg"
 
 const Container = styled.div`
@@ -28,6 +22,11 @@ const Icon = styled.div<{ background: string }>`
   overflow: hidden;
   background: ${props => props.background};
   position: relative;
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 `
 
 const Checked = styled.div<{ checked: boolean }>`
@@ -49,54 +48,25 @@ const Checked = styled.div<{ checked: boolean }>`
 `
 
 const Circle = ({
-  artistId,
+  src,
+  backgroundColor,
+  label,
   checked = false,
 }: {
-  artistId: "ine" | "jingburger" | "lilpa" | "jururu" | "gosegu" | "viichan"
+  src: string
+  backgroundColor?: string
+  label?: string
   checked?: boolean
 }) => {
-  const artistData = {
-    ine: {
-      icon: ine,
-      label: "아이네",
-      background: "#A55CE9",
-    },
-    jingburger: {
-      icon: jingburger,
-      label: "징버거",
-      background: "#FFDE1F",
-    },
-    lilpa: {
-      icon: lilpa,
-      label: "릴파",
-      background: "#6852EE",
-    },
-    jururu: {
-      icon: jururu,
-      label: "주르르",
-      background: "#FF69B1",
-    },
-    gosegu: {
-      icon: gosegu,
-      label: "고세구",
-      background: "#69D3FF",
-    },
-    viichan: {
-      icon: viichan,
-      label: "비챤",
-      background: "#99F65B",
-    },
-  }
-
   return (
     <Container>
-      <Icon background={artistData[artistId].background}>
+      <Icon background={backgroundColor}>
         <Checked checked={checked}>
           <img src={CheckLineYellowgreen} alt="" />
         </Checked>
-        <img src={artistData[artistId].icon} alt="" />
+        <img src={src} alt="" />
       </Icon>
-      <p>{artistData[artistId].label}</p>
+      <p>{label}</p>
     </Container>
   )
 }
