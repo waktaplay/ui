@@ -28,6 +28,7 @@ import SpacewakTextLogo from "@assets/logo/spacewak-text-logo.svg"
 import WaktaplayTextLogo from "@assets/logo/waktaplay-text-logo.svg"
 import ChunsikSVG from "@assets/icons/members/gwakchunsik.svg"
 import WaktaverseSVG from "@assets/icons/group/waktaverse.svg"
+import Artist from "./components/Artist"
 
 import { IElementProps } from "@components/List/types"
 
@@ -441,6 +442,21 @@ const App = () => {
           <h3>Notification</h3>
 
           <Notification itemList={notificationSample} />
+        </section>
+
+        <section>
+          <h3>Artist Circle</h3>
+          <Artist.Circle
+            src="https://i.namu.wiki/i/GDB3F3mWykOQhKUS9ftE_EvT3RTU1GicQSXLo2e3ZhzERSEwjKhMGMwl82bcgjV1v7tqE6QGtOZDnoXeLYXRTA5mF7JWAxrKkdUhO_9TO32odlNNgWpbOSd2N9Vjlwa-OhWTphBN8fbvfKgiH2lE4Q.webp"
+            label="아이네"
+            backgroundColor="#A55CE9"
+          />
+          <Artist.Circle
+            src="https://i.namu.wiki/i/s_TcEjLRXSizSo8BFJiuBk63OmfUrYqm4yw2LxEDTBljT9Hg219IMINMZ2ZJzwVDOmVPdpFgsnBBE8x93xftea6skVMfWo0y8ekPZhi7j6mY7HZ54-eadbHPNi7SUAq2Jzu0CE9PgjirV3_-4YGy2w.webp"
+            label="징버거"
+            backgroundColor="#FFDE1F"
+            checked
+          />
         </section>
       </main>
 
