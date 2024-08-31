@@ -1,9 +1,5 @@
 import styled from "styled-components"
 
-interface CardMainProps {
-  children?: React.ReactNode
-}
-
 const CardBorder = styled.div`
   width: 325px;
   border-radius: 10px 10px 0px 0px;
@@ -22,7 +18,9 @@ const CardMainDiv = styled.div`
   color: #fff;
 `
 
-const CardMain = ({ children }: CardMainProps) => {
+const CardMain = ({ children }: {
+  children?: React.ReactNode
+}) => {
   return (
     <>
       <CardBorder />
