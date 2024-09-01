@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
-import PopupSVG from "@/assets/icons/popup.svg"
-import Calender from "@/assets/icons/schedule_calendar.svg"
+import PopupSVG from "@assets/icons/popup.svg"
+import Calender from "@assets/icons/schedule_calendar.svg"
 
 import { IElementProps } from "./types"
 

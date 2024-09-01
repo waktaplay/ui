@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-import CloseSVG from "@/assets/icons/close.svg"
+import CloseSVG from "@assets/icons/close.svg"
 import Button from "../Button"
 
 const BgWrapper = styled.div`
@@ -70,7 +70,14 @@ const BodyWrapper = styled.div`
   }
 `
 
-const Default = ({ title, description, button = true, buttonComment, onClose, onClickBtn }: {
+const Default = ({
+  title,
+  description,
+  button = true,
+  buttonComment,
+  onClose,
+  onClickBtn,
+}: {
   title: string
   description: string
   onClose: () => void

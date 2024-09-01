@@ -1,9 +1,13 @@
 import React from "react"
 import styled from "styled-components"
-import CheckboxChecked from "@/assets/icons/checkbox_filled.svg"
-import CheckboxUnchecked from "@/assets/icons/checkbox_unfilled.svg"
+import CheckboxChecked from "@assets/icons/checkbox_filled.svg"
+import CheckboxUnchecked from "@assets/icons/checkbox_unfilled.svg"
 
-const CheckBox = ({ text, isChecked = false, setIsChecked }: {
+const CheckBox = ({
+  text,
+  isChecked = false,
+  setIsChecked,
+}: {
   text: string
   isChecked: boolean
   setIsChecked: React.Dispatch<React.SetStateAction<boolean>>

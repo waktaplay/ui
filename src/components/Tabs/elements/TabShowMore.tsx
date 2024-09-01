@@ -1,10 +1,13 @@
 import { SetStateAction, useState } from "react"
 import styled from "styled-components"
-import ArrowDownIcon from "@/assets/icons/arrow_small_down.svg"
-import ArrowUpIcon from "@/assets/icons/arrow_small_up.svg"
+import ArrowDownIcon from "@assets/icons/arrow_small_down.svg"
+import ArrowUpIcon from "@assets/icons/arrow_small_up.svg"
 // MEMO: Page Tab Header
 
-const TabShowMore = ({ isShowedMore, setIsShowedMore }: {
+const TabShowMore = ({
+  isShowedMore,
+  setIsShowedMore,
+}: {
   isShowedMore: Boolean
   setIsShowedMore: React.Dispatch<SetStateAction<Boolean>>
 }) => {
