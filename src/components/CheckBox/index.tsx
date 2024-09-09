@@ -8,12 +8,12 @@ const CheckBox = ({
   isChecked = false,
   setIsChecked,
 }: {
-  text: string
+  text?: string
   isChecked: boolean
   setIsChecked: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   return (
-    <Container htmlFor="checkBoxId">
+    <Container htmlFor="checkBoxId" text={text}>
       <HiddenCheckbox
         type="checkbox"
         id="checkBoxId"
@@ -23,23 +23,26 @@ const CheckBox = ({
         }}
       />
       <img src={isChecked ? CheckboxChecked : CheckboxUnchecked} />
-      <Text>{text}</Text>
+      {text ? <Text>{text}</Text> : null}
     </Container>
   )
 }
 
-const Container = styled.label`
+const Container = styled.label<{ text: string }>`
   cursor: pointer;
   background-color: transparent;
-  display: inline-flex;
-  padding: 6px;
-  align-items: center;
-  gap: 8px;
-  border-radius: 6px;
 
-  &:hover {
+  ${({ text }) =>
+    text &&
+    `
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 6px;
+    padding: 6px;
+    &:hover {
     background-color: rgba(255, 255, 255, 0.1);
-  }
+  }`}
 `
 
 const HiddenCheckbox = styled.input`
