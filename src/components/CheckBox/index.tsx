@@ -19,6 +19,7 @@ const CheckBox = ({
   setIsChecked: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   return (
+
     <Container htmlFor={id} text={text}>
       <HiddenCheckbox
         type="checkbox"
