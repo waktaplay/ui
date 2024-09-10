@@ -4,19 +4,27 @@ import CheckboxChecked from "@assets/icons/checkbox_filled.svg"
 import CheckboxUnchecked from "@assets/icons/checkbox_unfilled.svg"
 
 const CheckBox = ({
+  id,
+  name,
+  value,
   text,
   isChecked = false,
   setIsChecked,
 }: {
+  id: string
+  name?: string
+  value?: string
   text?: string
   isChecked: boolean
   setIsChecked: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   return (
-    <Container htmlFor="checkBoxId" text={text}>
+    <Container htmlFor={id} text={text}>
       <HiddenCheckbox
         type="checkbox"
-        id="checkBoxId"
+        id={id}
+        name={name}
+        value={value}
         checked={isChecked}
         onChange={() => {
           setIsChecked(!isChecked)
