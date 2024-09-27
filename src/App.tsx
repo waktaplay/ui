@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 import styled from "styled-components"
 
 import "normalize.css"
@@ -142,7 +142,20 @@ const App = () => {
 
   //해당 isChecked state는 checkbox 와 사용되는  state 입니다.
   const [isChecked, setIsChecked] = useState(false)
+  const checkRef = useRef(null)
   const [modalToggle, setModalToggle] = useState(false)
+
+  function handleAllCheckbox() {
+    if (checkRef.current.checked) {
+      console.log("✅", checkRef.current.checked)
+      console.log("✅ : check 되었습니다 check 함수가 실행됩니다1")
+      console.log("✅", isChecked)
+    } else {
+      console.log("❌", checkRef.current.checked)
+      console.log("❌ : check 되지 않았습니다 check 함수가 절대 실행 안됩니다")
+      console.log("❌", isChecked)
+    }
+  }
 
   return (
     <>
@@ -311,7 +324,19 @@ const App = () => {
         <section>
           {/* 체크되면 글자색이 바뀝니다 */}
           <H3 isChecked={isChecked}>CheckBox</H3>
-          <CheckBox text="checkbox" isChecked={isChecked} setIsChecked={setIsChecked} />
+          <CheckBox
+            id="testId"
+            text="checkbox"
+            name="test"
+            value="testValue"
+            checked={isChecked}
+            // disabled
+            ref={checkRef}
+            onChange={() => {
+              setIsChecked(!isChecked)
+              handleAllCheckbox()
+            }}
+          />
         </section>
 
         <section>
