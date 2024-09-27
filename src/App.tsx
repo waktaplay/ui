@@ -27,7 +27,6 @@ import Youtube from "@assets/icons/youtube.svg"
 import Link from "@assets/icons/link.svg"
 import SpacewakTextLogo from "@assets/logo/spacewak-text-logo.svg"
 import WaktaplayTextLogo from "@assets/logo/waktaplay-text-logo.svg"
-import ChunsikSVG from "@assets/icons/members/gwakchunsik.svg"
 import WaktaverseSVG from "@assets/icons/group/waktaverse.svg"
 
 import { IElementProps } from "@components/List/types"
@@ -324,6 +323,7 @@ const App = () => {
         <section>
           {/* 체크되면 글자색이 바뀝니다 */}
           <H3 isChecked={isChecked}>CheckBox</H3>
+
           <CheckBox
             id="testId"
             text="checkbox"
@@ -337,6 +337,7 @@ const App = () => {
               handleAllCheckbox()
             }}
           />
+
         </section>
 
         <section>
@@ -376,12 +377,6 @@ const App = () => {
             <Chip.Normal
               primary
               item={{ label: "텍스트", value: "txt" }}
-              onClick={(value: string) => {
-                alert(`${value} selected`)
-              }}
-            />
-            <Chip.Small
-              item={{ icon: ChunsikSVG, label: "곽춘식", value: "chunsik", iconBgColor: "#1e301e" }}
               onClick={(value: string) => {
                 alert(`${value} selected`)
               }}
