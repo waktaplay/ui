@@ -337,7 +337,6 @@ const App = () => {
               handleAllCheckbox()
             }}
           />
-
         </section>
 
         <section>
