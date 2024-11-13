@@ -32,7 +32,7 @@ importers:
         version: 8.7.0(eslint@8.57.1)(typescript@5.6.2)
       '@vitejs/plugin-react-swc':
         specifier: ^3.7.0
-        version: 3.7.1(vite@5.4.8(terser@5.34.0))
+        version: 3.7.1(vite@5.4.8(terser@5.36.0))
       eslint:
         specifier: ^8.57.1
         version: 8.57.1
@@ -59,7 +59,7 @@ importers:
         version: 3.3.3
       terser:
         specifier: ^5.34.0
-        version: 5.34.0
+        version: 5.36.0
       tsup:
         specifier: ^8.3.0
         version: 8.3.0(@microsoft/api-extractor@7.47.9)(@swc/core@1.7.39)(postcss@8.4.47)(typescript@5.6.2)
@@ -68,13 +68,13 @@ importers:
         version: 5.6.2
       vite:
         specifier: ^5.4.8
-        version: 5.4.8(terser@5.34.0)
+        version: 5.4.8(terser@5.36.0)
       vite-plugin-svgr:
         specifier: ^4.2.0
-        version: 4.2.0(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.8(terser@5.34.0))
+        version: 4.2.0(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.8(terser@5.36.0))
       vite-tsconfig-paths:
         specifier: ^5.0.1
-        version: 5.0.1(typescript@5.6.2)(vite@5.4.8(terser@5.34.0))
+        version: 5.0.1(typescript@5.6.2)(vite@5.4.8(terser@5.36.0))
 
 packages:
 
@@ -908,6 +908,11 @@ packages:
 
   acorn@8.12.1:
     resolution: {integrity: sha512-tcpGyI9zbizT9JbV6oYE477V6mTlXvvi0T0G3SNIYE2apm/G5huBa1+K89VGeovbg+jycCrfhl3ADxErOuO6Jg==}
+    engines: {node: '>=0.4.0'}
+    hasBin: true
+
+  acorn@8.14.0:
+    resolution: {integrity: sha512-cl669nCJTZBsL97OF4kUQm5g5hC2uihk0NxY3WENAC0TYdILVkAyHymAntgxGkl7K+t0cXIrH5siy5S4XkFycA==}
     engines: {node: '>=0.4.0'}
     hasBin: true
 
@@ -2166,8 +2171,8 @@ packages:
     resolution: {integrity: sha512-7gr8p9TQP6RAHusBOSLs46F4564ZrjV8xFmw5zCmgmhGUcw2hxsShhJ6CEiHQMgPDwAQ1fWHPM0ypc4RMAig4A==}
     engines: {node: ^14.18.0 || >=16.0.0}
 
-  terser@5.34.0:
-    resolution: {integrity: sha512-y5NUX+U9HhVsK/zihZwoq4r9dICLyV2jXGOriDAVOeKhq3LKVjgJbGO90FisozXLlJfvjHqgckGmJFBb9KYoWQ==}
+  terser@5.36.0:
+    resolution: {integrity: sha512-IYV9eNMuFAV4THUspIRXkLakHnV6XO7FEdtKjf/mDyrnqUg9LnlOn6/RwRvM9SZjR4GUq8Nk8zj67FzVARr74w==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -3120,10 +3125,10 @@ snapshots:
 
   '@ungap/structured-clone@1.2.0': {}
 
-  '@vitejs/plugin-react-swc@3.7.1(vite@5.4.8(terser@5.34.0))':
+  '@vitejs/plugin-react-swc@3.7.1(vite@5.4.8(terser@5.36.0))':
     dependencies:
       '@swc/core': 1.7.39
-      vite: 5.4.8(terser@5.34.0)
+      vite: 5.4.8(terser@5.36.0)
     transitivePeerDependencies:
       - '@swc/helpers'
 
@@ -3132,6 +3137,8 @@ snapshots:
       acorn: 8.12.1
 
   acorn@8.12.1: {}
+
+  acorn@8.14.0: {}
 
   ajv-draft-04@1.0.0(ajv@8.13.0):
     optionalDependencies:
@@ -4515,10 +4522,10 @@ snapshots:
       '@pkgr/core': 0.1.1
       tslib: 2.7.0
 
-  terser@5.34.0:
+  terser@5.36.0:
     dependencies:
       '@jridgewell/source-map': 0.3.6
-      acorn: 8.12.1
+      acorn: 8.14.0
       commander: 2.20.3
       source-map-support: 0.5.21
 
@@ -4662,36 +4669,36 @@ snapshots:
     dependencies:
       punycode: 2.3.1
 
-  vite-plugin-svgr@4.2.0(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.8(terser@5.34.0)):
+  vite-plugin-svgr@4.2.0(rollup@4.22.4)(typescript@5.6.2)(vite@5.4.8(terser@5.36.0)):
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@4.22.4)
       '@svgr/core': 8.1.0(typescript@5.6.2)
       '@svgr/plugin-jsx': 8.1.0(@svgr/core@8.1.0(typescript@5.6.2))
-      vite: 5.4.8(terser@5.34.0)
+      vite: 5.4.8(terser@5.36.0)
     transitivePeerDependencies:
       - rollup
       - supports-color
       - typescript
 
-  vite-tsconfig-paths@5.0.1(typescript@5.6.2)(vite@5.4.8(terser@5.34.0)):
+  vite-tsconfig-paths@5.0.1(typescript@5.6.2)(vite@5.4.8(terser@5.36.0)):
     dependencies:
       debug: 4.3.6
       globrex: 0.1.2
       tsconfck: 3.1.1(typescript@5.6.2)
     optionalDependencies:
-      vite: 5.4.8(terser@5.34.0)
+      vite: 5.4.8(terser@5.36.0)
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  vite@5.4.8(terser@5.34.0):
+  vite@5.4.8(terser@5.36.0):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.47
       rollup: 4.22.4
     optionalDependencies:
       fsevents: 2.3.3
-      terser: 5.34.0
+      terser: 5.36.0
 
   webidl-conversions@4.0.2: {}
 
