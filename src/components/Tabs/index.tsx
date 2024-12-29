@@ -7,16 +7,20 @@ interface IItem {
   title: string
 }
 
-interface IChip {
-  index: number
-  name: string
-}
-
-const Tabs = ({ TABS, CHIPS, selectedTabIndex, setSelectedTabIndex }: {
+const Tabs = ({
+  TABS,
+  selectedTabIndex,
+  setSelectedTabIndex,
+  topButtonComponent,
+  bottomButtonComponent,
+  chipComponents,
+}: {
   TABS: IItem[]
-  CHIPS: IChip[]
   selectedTabIndex: Number
   setSelectedTabIndex: React.Dispatch<SetStateAction<number>>
+  topButtonComponent?: React.ReactElement // top Button (e.g. filter)
+  bottomButtonComponent?: React.ReactElement // bottom Button(e.g. memberfilter)
+  chipComponents?: React.ReactElement[] // render chips
 }) => {
   return (
     <Container>
@@ -36,21 +40,11 @@ const Tabs = ({ TABS, CHIPS, selectedTabIndex, setSelectedTabIndex }: {
             )
           })}
         </Wrapper>
-        <Wrapper>
-          {/* TODO : IMPORT FILTER COMPONENT */}
-          <TabBtn text="FILTER" />
-        </Wrapper>
+        <Wrapper>{topButtonComponent}</Wrapper>
       </TopWrapper>
       <BottomWrapper>
-        <ChipWrapper>
-          {CHIPS.map(CHIP => {
-            return <FakeChip key={CHIP.index}># {CHIP.name}</FakeChip>
-          })}
-        </ChipWrapper>
-        <Wrapper>
-          {/* TODO : IMPORT MEMBER FILTER COMPONENT */}
-          <TabBtn text="MEMBER FILTER" />
-        </Wrapper>
+        <ChipWrapper>{chipComponents}</ChipWrapper>
+        <Wrapper>{bottomButtonComponent}</Wrapper>
       </BottomWrapper>
     </Container>
   )
@@ -91,16 +85,6 @@ const ChipWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
-`
-//  TODO : ERASE CHIP CSS
-const FakeChip = styled.span`
-  width: fit-content;
-  height: fit-content;
-  border-radius: 5px;
-  background-color: gray;
-  padding: 8px 12px;
-  font-size: 14px;
-  color: white;
 `
 
 export default Tabs

@@ -49,16 +49,16 @@ const TABS = [
 
 const CHIPS = [
   {
-    index: 0,
-    name: "고정멤버",
+    label: "고정멤버",
+    value: "고정멤버",
   },
   {
-    index: 1,
-    name: "아카데미",
+    label: "아카데미",
+    value: "아카데미",
   },
   {
-    index: 2,
-    name: "이세돌",
+    label: "이세돌",
+    value: "이세돌",
   },
 ]
 
@@ -255,7 +255,30 @@ const App = () => {
                 TABS={TABS}
                 selectedTabIndex={selectedTabIndex}
                 setSelectedTabIndex={setSelectedTabIndex}
-                CHIPS={CHIPS}
+                topButtonComponent={
+                  <Filter.Arrow
+                    options={[
+                      { label: "최신순", value: "newest" },
+                      { label: "오래된순", value: "oldest" },
+                      { label: "조회순", value: "views" },
+                    ]}
+                    onChange={value => alert(`filter 의 options 이 선택되었습니다 "${value}"`)}
+                  />
+                }
+                bottomButtonComponent={
+                  <Button.Fill size="small" onClick={() => alert("Button Click!")}>
+                    Button Fill small gray
+                  </Button.Fill>
+                }
+                chipComponents={CHIPS.map((CHIP, index) => (
+                  <Chip.Normal
+                    key={index}
+                    item={CHIP}
+                    onClick={(value: string) => {
+                      alert(`${value} selected`)
+                    }}
+                  />
+                ))}
               />
             </div>
             {selectedTabIndex === 0 && (
