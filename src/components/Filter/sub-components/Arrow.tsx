@@ -3,6 +3,7 @@ import Base from "./Base"
 import ArrowDown from "@assets/icons/arrow_small_down.svg"
 import styled from "styled-components"
 import Menu from "../../Menu"
+import { createPortal } from "react-dom"
 
 interface FilterMenuPosition {
   top: string
@@ -12,18 +13,19 @@ interface FilterMenuPosition {
   dir: string
 }
 
-const FilterMenuContainer = styled.div<{ $active: boolean; menuposition: FilterMenuPosition }>`
+const FilterMenuContainer = styled.div<{ $active: boolean; $menuposition: FilterMenuPosition }>`
   position: fixed;
-  top: ${props => props.menuposition.top};
-  bottom: ${props => props.menuposition.bottom};
-  left: ${props => props.menuposition.left};
-  right: ${props => props.menuposition.right};
-  transform-origin: ${props => props.menuposition.dir};
+  top: ${props => props.$menuposition.top};
+  bottom: ${props => props.$menuposition.bottom};
+  left: ${props => props.$menuposition.left};
+  right: ${props => props.$menuposition.right};
+  transform-origin: ${props => props.$menuposition.dir};
   visibility: ${props => (props.$active ? "visible" : "hidden")};
   transform: ${props => (props.$active ? "scale(1)" : "scale(0.8)")};
   opacity: ${props => (props.$active ? "1" : "0")};
   transition-property: visibility, transform, opacity;
   transition-duration: 250ms;
+  z-index: 150;
 `
 
 const FilterArrowImg = styled.img<{ $active: boolean }>`
@@ -56,6 +58,7 @@ const FilterArrow = ({
     dir: "top",
   })
   const menuContainer = useRef<null | HTMLDivElement>(null)
+  const targetContainer = useRef<null | HTMLDivElement>(null)
 
   // value 로 컨트롤
   useEffect(() => {
@@ -72,7 +75,7 @@ const FilterArrow = ({
     // 메뉴 노드
     const menu = menuContainer.current
     // filter 의 위치 및 사이즈
-    const filterRect = menuContainer.current.parentElement.getBoundingClientRect()
+    const filterRect = targetContainer.current.parentElement.getBoundingClientRect()
     // 화면 사이즈
     const windowWidth = window.innerWidth
     const windowHeight = window.innerHeight
@@ -101,19 +104,22 @@ const FilterArrow = ({
 
   return (
     <Base active={active} setActive={setActive}>
-      <span>{selectOption.label}</span>
+      <span ref={targetContainer}>{selectOption.label}</span>
       <FilterArrowImg $active={active} alt="down_arrow" src={ArrowDown} />
-      <FilterMenuContainer $active={active} ref={menuContainer} menuposition={menuPosition}>
-        <Menu
-          selectedKey={selectOption.value}
-          onClick={changedValue => {
-            const index = options.findIndex(x => x.value === changedValue)
-            setSelectOption(options[index])
-            onChange && onChange(changedValue)
-          }}
-          itemList={options}
-        />
-      </FilterMenuContainer>
+      {createPortal(
+        <FilterMenuContainer $active={active} ref={menuContainer} $menuposition={menuPosition}>
+          <Menu
+            selectedKey={selectOption.value}
+            onClick={changedValue => {
+              const index = options.findIndex(x => x.value === changedValue)
+              setSelectOption(options[index])
+              onChange?.(changedValue)
+            }}
+            itemList={options}
+          />
+        </FilterMenuContainer>,
+        document.body,
+      )}
     </Base>
   )
 }
