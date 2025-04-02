@@ -33,7 +33,11 @@ const FilterActiveControlInput = styled.input`
   pointer-events: none;
 `
 
-const FilterBase = ({ children, active, setActive }: {
+const FilterBase = ({
+  children,
+  active,
+  setActive,
+}: {
   children: Array<ReactElement | string>
   active: boolean
   setActive: Dispatch<SetStateAction<boolean>>
@@ -43,14 +47,18 @@ const FilterBase = ({ children, active, setActive }: {
   // filter active 시 스크롤 disable
   useEffect(() => {
     const body = document.body
+    const html = document.documentElement
     if (active) {
       body.setAttribute("style", "overflow:hidden;")
+      html.setAttribute("style", "overflow:hidden;")
     } else {
       body.setAttribute("style", "")
+      html.setAttribute("style", "")
     }
     // unmounted 시 초기화
     return () => {
       body.setAttribute("style", "")
+      html.setAttribute("style", "")
     }
   }, [active])
 
@@ -67,7 +75,7 @@ const FilterBase = ({ children, active, setActive }: {
         onMouseDown={() =>
           // blur 이벤트 순서 이슈로 timeout 추가
           setTimeout(() => {
-            !active && setActive(true)
+            if (!active) setActive(true)
           })
         }
       >
